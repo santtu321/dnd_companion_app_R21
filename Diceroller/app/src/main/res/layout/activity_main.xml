@@ -71,105 +71,67 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.977" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="391dp"
-        android:layout_height="355dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start|right"
-            android:orientation="horizontal"
-            android:visibility="visible">
-
-            <TextView
-                android:id="@+id/tViewDice2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:text="20"
-                android:textColor="@color/black"
-                android:textSize="48sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tViewDice1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:text="10"
-                android:textColor="@color/black"
-                android:textSize="48sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <EditText
-        android:id="@+id/eTextNumber1"
-        android:layout_width="94dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="60dp"
-        android:ems="10"
-        android:inputType="number"
-        android:text="2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tViewNumber1"
-        android:layout_width="95dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="10dp"
-        android:text="How many dices?"
-        app:layout_constraintBottom_toTopOf="@+id/eTextNumber1"
-        app:layout_constraintStart_toStartOf="@+id/eTextNumber1"
-        app:layout_constraintTop_toBottomOf="@+id/rGroup1"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="126dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="4dp"
-        android:text="proficiency?"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/rGroup1"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
     <TextView
         android:id="@+id/tViewNumber2"
         android:layout_width="95dp"
         android:layout_height="38dp"
-        android:layout_marginStart="24dp"
-        android:text="How big dices?"
-        app:layout_constraintBottom_toTopOf="@+id/eTextNumber2"
-        app:layout_constraintStart_toEndOf="@+id/tViewNumber1"
-        app:layout_constraintTop_toBottomOf="@+id/rGroup1"
-        app:layout_constraintVertical_bias="1.0" />
+        android:layout_marginStart="12dp"
+        android:text="How big proficiency?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rGroup1" />
+
+    <TextView
+        android:id="@+id/tViewDice1"
+        android:layout_width="75dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="104dp"
+        android:text="20"
+        android:textColor="@color/black"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/tViewDice2"
+        app:layout_constraintHorizontal_bias="0.013"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tViewDice2"
+        android:layout_width="75dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="96dp"
+        android:text="10"
+        android:textColor="@color/black"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/eTextNumber2"
-        android:layout_width="94dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="60dp"
+        android:id="@+id/eText1"
+        android:layout_width="93dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="9dp"
         android:ems="10"
-        android:importantForAutofill="no"
         android:inputType="number"
-        android:text="20"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="0"
+        app:layout_constraintBottom_toTopOf="@+id/tView1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tViewNumber2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/bIntent"
+        android:layout_width="132dp"
+        android:layout_height="73dp"
+        android:text="damage rolls"
+        app:layout_constraintBottom_toTopOf="@+id/bRoll"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.438"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.942"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.684" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
