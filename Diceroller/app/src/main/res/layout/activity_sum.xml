@@ -12,6 +12,7 @@
         android:layout_height="46dp"
         android:ems="10"
         android:inputType="number"
+        android:text="20"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.013"
@@ -20,7 +21,7 @@
         app:layout_constraintVertical_bias="0.847" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="how many dices?"
@@ -47,6 +48,7 @@
         android:layout_height="46dp"
         android:ems="10"
         android:inputType="number"
+        android:text="10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.019"
@@ -55,83 +57,12 @@
         app:layout_constraintVertical_bias="0.992" />
 
     <LinearLayout
+        android:id="@+id/pLayout"
         android:layout_width="409dp"
         android:layout_height="358dp"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
-
-        <LinearLayout
-            android:id="@+id/lLayout1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" />
-
-        <LinearLayout
-            android:id="@+id/lLayout3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" />
-
-        <LinearLayout
-            android:id="@+id/lLayout4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" />
-
-        <LinearLayout
-            android:id="@+id/lLayout5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" />
-
-        <LinearLayout
-            android:id="@+id/lLayout6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" />
-
-        <LinearLayout
-            android:id="@+id/lLayout7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" />
-
-        <LinearLayout
-            android:id="@+id/lLayout8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" />
-
-        <LinearLayout
-            android:id="@+id/lLayout9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" />
-
-        <LinearLayout
-            android:id="@+id/lLayout10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" />
-
-        <LinearLayout
-            android:id="@+id/lLayout11"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-        </LinearLayout>
-
-    </LinearLayout>
+        tools:layout_editor_absoluteY="1dp" />
 
     <Button
         android:id="@+id/bRoll2"
@@ -146,10 +77,10 @@
         app:layout_constraintStart_toEndOf="@+id/eText3" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tViewSum"
         android:layout_width="69dp"
         android:layout_height="37dp"
-        android:layout_marginBottom="92dp"
+        android:layout_marginBottom="8dp"
         android:layout_weight="1"
         android:text="20"
         android:textColor="@color/black"
@@ -157,7 +88,18 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/bRoll2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.874"
+        app:layout_constraintHorizontal_bias="0.827"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tView4"
+        android:layout_width="97dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="4dp"
+        android:text="Your Sum was:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tViewSum"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.88" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

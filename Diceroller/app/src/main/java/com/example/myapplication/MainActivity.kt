@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     val intentButton1: Button = findViewById(R.id.bIntent)
     var proficiency = 0
 
-        fun checkAdvantage(): Int {                                                       // tämä funktio katsoo mikä radiobuttoneista on selectattu ja palauttaa sen id:n.
+        fun checkAdvantage(): Int {                                                                 // tämä funktio katsoo mikä radiobuttoneista on selectattu ja palauttaa sen id:n.
             return radioGroup!!.checkedRadioButtonId
         }
 
@@ -49,7 +49,10 @@ class MainActivity : AppCompatActivity() {
                 textViewResult.text = (mySortedNumbers[0] + proficiency).toString()
             }
             else -> {
-                error("Error")
+                val myRandomNumbers = List (2){Random.nextInt(1,21)}
+                diceTextView1.text = myRandomNumbers[0].toString()
+                diceTextView2.text = myRandomNumbers[1].toString()
+                textViewResult.text = (myRandomNumbers[0] + proficiency).toString()
             }
         }
     }
