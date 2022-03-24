@@ -123,7 +123,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/bIntent"
+        android:id="@+id/bIntent1"
         android:layout_width="132dp"
         android:layout_height="73dp"
         android:text="damage rolls"
@@ -133,5 +133,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.684" />
+
+    <Button
+        android:id="@+id/bIntent2"
+        android:layout_width="134dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="31dp"
+        android:text="Rules"
+        app:layout_constraintBottom_toTopOf="@+id/bRoll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.802"
+        app:layout_constraintStart_toEndOf="@+id/rGroup1"
+        app:layout_constraintTop_toBottomOf="@+id/bIntent1"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

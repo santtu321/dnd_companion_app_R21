@@ -18,7 +18,9 @@ class MainActivity : AppCompatActivity() {
     val diceTextView1: TextView = findViewById(R.id.tViewDice1)
     val diceTextView2: TextView = findViewById(R.id.tViewDice2)
     val proficiencyNumber: EditText = findViewById(R.id.eText1)
-    val intentButton1: Button = findViewById(R.id.bIntent)
+    val intentButton1: Button = findViewById(R.id.bIntent1)
+    val intentButton2: Button = findViewById(R.id.bIntent2)
+
     var proficiency = 0
 
         fun checkAdvantage(): Int {                                                                 // tämä funktio katsoo mikä radiobuttoneista on selectattu ja palauttaa sen id:n.
@@ -69,6 +71,10 @@ class MainActivity : AppCompatActivity() {
         intentButton1.setOnClickListener{
             val intent = Intent(this, sumActivity::class.java)
             startActivityForResult(intent, 1)
+        }
+        intentButton2.setOnClickListener{
+            val intent2 = Intent(this, RuleActivity::class.java)
+            startActivity(intent2)
         }
     }
 }
