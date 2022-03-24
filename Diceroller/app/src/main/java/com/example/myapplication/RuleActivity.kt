@@ -29,7 +29,6 @@ class RuleActivity : AppCompatActivity() {
         var et_dataInput = findViewById<EditText>(R.id.et_dataInput)
 
 
-
         //listeners
         btn_getData.setOnClickListener {
             getDataSpells()
