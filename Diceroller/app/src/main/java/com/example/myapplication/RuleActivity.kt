@@ -1,8 +1,11 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -62,6 +65,34 @@ class RuleActivity : AppCompatActivity() {
         })
         queue.add(request)
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.popup_menu,menu)
+        return true
+    }                                                                                   //tämä kaikkiin activityihin tekee kolmepisteen appbaariin ja sen jälkeen se näyttää popup menun
+                                                                                        // kun siitä klikataan. alempana on myös on funktio kun popupmenun itemeistä klikataan
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.action_sum->{
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_rule->{
+                val intent = Intent(this, RuleActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_main->{
+                val intent = Intent(this, sumActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else->super.onOptionsItemSelected(item)
+        }
     }
 
 }
