@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.widget.*
 import kotlin.random.Random
 import android.content.Intent
+import android.os.Handler
 import android.os.SystemClock
 import android.view.Menu
 import android.view.MenuItem
 import java.util.concurrent.TimeUnit
+import kotlin.time.DurationUnit
 
 
 class MainActivity : AppCompatActivity() {
@@ -23,20 +25,16 @@ class MainActivity : AppCompatActivity() {
     val diceTextView2: TextView = findViewById(R.id.tViewDice2)
     val proficiencyNumber: EditText = findViewById(R.id.eText1)
 
+    val handler = Handler()
+
     var proficiency = 0
 
         fun checkAdvantage(): Int {                                                                 // tämä funktio katsoo mikä radiobuttoneista on selectattu ja palauttaa sen id:n.
             return radioGroup!!.checkedRadioButtonId
         }
-        
-    fun intenseRoll() {
-        val myRandomNumbers = List (21){ Random.nextInt(1,21)}
-        for(i in myRandomNumbers){
-            diceTextView1.text = myRandomNumbers[i].toString()
-            diceTextView2.text = myRandomNumbers[i+1].toString()
-            Thread.sleep(30)
 
-        }
+    fun intenseRoll() {
+
     }
 
 
@@ -44,25 +42,60 @@ class MainActivity : AppCompatActivity() {
         when(advantage){
 
             "advantage" -> {
-                intenseRoll()
-                val myRandomNumbers = List (2){Random.nextInt(1,21)}                //Katsotaan mikä advantage on ja edetään siihen switch-statella
-                val mySortedNumbers = myRandomNumbers.sortedDescending()                           //Aina kun tätä funktiota kutsutaan se rollaa 2 numeroa ja sorttaa ne laskevasti tai nousevasti
-                diceTextView1.text = myRandomNumbers[0].toString()                                 // riippuen advantagesta. Jos advantagea ei ole se antaa resultiksi ensimmäisen numeron.
-                diceTextView2.text = myRandomNumbers[1].toString()
-                textViewResult.text = (mySortedNumbers[0] + proficiency).toString()
+                Thread(Runnable{                                                                    //tehdään threadi näistä rollauksista, jotta voidaan pyöritellä vähän aikaa numeroita
+                                                                                                    // näytöllä
+                    var i = 0
+
+                    while(i < 20){
+                        runOnUiThread({diceTextView1.text = (1..20).random().toString()})
+                        runOnUiThread({diceTextView2.text = (1..20).random().toString()})               // tässä sitten tehdään looppi jossa pyöritellään numeroita 50 millisekunnin välein
+                        Thread.sleep(50)                                                           // eli koko rumbassa kestää sekuntti.
+                        i++
+                    }
+                    val myRandomNumbers = List (2){Random.nextInt(1,21)}                //Katsotaan mikä advantage on ja edetään siihen switch-statella
+                    val mySortedNumbers = myRandomNumbers.sortedDescending()                            //Aina kun tätä funktiota kutsutaan se rollaa 2 numeroa ja sorttaa ne laskevasti tai nousevasti
+                    runOnUiThread({diceTextView1.text = myRandomNumbers[0].toString()})                                 // riippuen advantagesta. Jos advantagea ei ole se antaa resultiksi ensimmäisen numeron.
+                    runOnUiThread({diceTextView2.text = myRandomNumbers[1].toString()})
+                    runOnUiThread({textViewResult.text = (mySortedNumbers[0] + proficiency).toString()})
+                }).start()                                                                                  // ja laitetaan threadi pyörimmää
+
             }
             "no advantage" -> {
-                val myRandomNumbers = List (2){Random.nextInt(1,21)}
-                diceTextView1.text = myRandomNumbers[0].toString()
-                diceTextView2.text = myRandomNumbers[1].toString()
-                textViewResult.text = (myRandomNumbers[0] + proficiency).toString()
+                Thread(Runnable{
+
+                    var i = 0
+
+                    while(i < 20){
+                        runOnUiThread({diceTextView1.text = (1..20).random().toString()})
+                        runOnUiThread({diceTextView2.text = (1..20).random().toString()})
+                        Thread.sleep(50)
+                        i++
+                    }
+                    val myRandomNumbers = List (2){Random.nextInt(1,21)}
+
+                    runOnUiThread({diceTextView1.text = myRandomNumbers[0].toString()})
+                    runOnUiThread({diceTextView2.text = myRandomNumbers[1].toString()})
+                    runOnUiThread({textViewResult.text = (myRandomNumbers[0] + proficiency).toString()})
+                }).start()
+
             }
             "Disadvantage" -> {
-                val myRandomNumbers = List (2){Random.nextInt(1,21)}
-                val mySortedNumbers = myRandomNumbers.sorted()
-                diceTextView1.text = myRandomNumbers[0].toString()
-                diceTextView2.text = myRandomNumbers[1].toString()
-                textViewResult.text = (mySortedNumbers[0] + proficiency).toString()
+                Thread(Runnable{
+
+                    var i = 0
+
+                    while(i < 20){
+                        runOnUiThread({diceTextView1.text = (1..20).random().toString()})
+                        runOnUiThread({diceTextView2.text = (1..20).random().toString()})
+                        Thread.sleep(50)
+                        i++
+                    }
+                    val myRandomNumbers = List (2){Random.nextInt(1,21)}
+                    val mySortedNumbers = myRandomNumbers.sorted()
+                    runOnUiThread({diceTextView1.text = myRandomNumbers[0].toString()})
+                    runOnUiThread({diceTextView2.text = myRandomNumbers[1].toString()})
+                    runOnUiThread({textViewResult.text = (mySortedNumbers[0] + proficiency).toString()})
+                }).start()
             }
             else -> {
                 rollTheDice("no advantage")
