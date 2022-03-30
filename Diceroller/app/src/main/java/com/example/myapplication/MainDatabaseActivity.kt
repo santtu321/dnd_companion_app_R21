@@ -70,22 +70,22 @@ class MainDatabaseActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_sum -> {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                true
-            }
-            R.id.action_rule -> {
-                val intent = Intent(this, RuleActivity::class.java)
-                startActivity(intent)
-                true
-            }
-            R.id.action_main -> {
+            R.id.action_sum->{
                 val intent = Intent(this, sumActivity::class.java)
                 startActivity(intent)
                 true
             }
-            R.id.action_database -> {
+            R.id.action_rule->{
+                val intent = Intent(this, RuleActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_main->{
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_database->{
                 val intent = Intent(this, MainDatabaseActivity::class.java)
                 startActivity(intent)
                 true

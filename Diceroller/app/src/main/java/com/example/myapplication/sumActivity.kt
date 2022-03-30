@@ -9,6 +9,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlin.math.ceil
 import kotlin.random.Random
 
@@ -22,13 +24,32 @@ class sumActivity : AppCompatActivity() {
         val rollButton2: Button = findViewById(R.id.bRoll2)
         val sum: TextView = findViewById(R.id.tViewSum)
 
+        fun intenseRoll(index: Int, tView : TextView, myRandomNumbers: List<Int>) = runBlocking {         // pistetään tässä nuo threadit omaan funktioon, jossa käytetään co
+            launch {                                                                                      //routineja, koska muuten yksittäinen threadi ei pysty tekemään kaikkia
+                Thread(Runnable{                                                                          // numeroita yhtäaikaa ja siitä tulisi sekava.
 
+                    var i = 0
 
+                    while(i < 20){
+                        if(i != 19){
+                            runOnUiThread({tView.text = (1..20).random().toString()})                      //toimii samalla tavalla kuin mainactivityssäkin olevat threadit.
+                                                                                                           //ainoa ero on, että tätä funktiota kutsutaan aina kun uusi textview olio luodaan
+                            Thread.sleep(50)                                                         // eli tämä funktio pyörittää yhtä oliota kerralla.
+                        }
+                        else{
+                            runOnUiThread({tView.text = myRandomNumbers[index-1].toString()})
+                        }
+                        i++
+                    }
+                }).start()
+            }
+        }
         fun createWidgets(rows: Int, dices: Int){
 
             var x = 1
             var k = 1
             var total = 0
+
 
 
             val myRandomNumbers = List (dices){Random.nextInt(1,diceSides.text.toString().toInt())}         //tehdään ensimmäiseksi randomit numerot
@@ -51,13 +72,14 @@ class sumActivity : AppCompatActivity() {
 
                 parent.addView(lL)                                                              // tässä me liitämme lL layoutin meidän parent layouttiin.
 
-                while (i < 10 && dices >= k) {                                                  // jonka jälkeen pistämmä lL layouttiin 10 textview oliota, jotka toimivat noppina.
+                while (i < 8 && dices >= k) {                                                  // jonka jälkeen pistämmä lL layouttiin 10 textview oliota, jotka toimivat noppina.
                     val tView = TextView(this)
 
                     tView.layoutParams = LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT
                     )
+                    tView.id = x+10
                     tView.text = "${myRandomNumbers[k-1]}"
                     tView.textSize = 30.0F
                     tView.setPadding(10,0,10,0)                         // taas parametrejä text oliolle.
@@ -65,9 +87,11 @@ class sumActivity : AppCompatActivity() {
                     tView.setTextColor(0xff000000.toInt())
                     tView.setTypeface(null, Typeface.BOLD)
 
-                    lL.addView(tView)                                                       // ja liitetään text olio lL layouttiin.
-                    i++
-                    k++
+                    lL.addView(tView)                                                               // ja liitetään text olio lL layouttiin.
+                    intenseRoll(k, tView, myRandomNumbers)                                          //kutsutaan rollausfunktiota ja annetaan sille tämä textiolio mikä luotiin juuri ja
+                    i++                                                                             //sen hetkinen noppanumero mikä on k ja ne oikeat numerot josta k:ta käyttämällä löydämme
+                    k++                                                                             //sille oikean numeron. tämä tehdään sen takia, koska muuten näytössä olevat numerot ei ole
+                                                                                                    //sama, mikä summatuloksessa oleva numero.
                 }
                 x++                                                                         // tämä rumba kestää niinkauan, kun rivejä on ja jokaiseen riviin teemme 10 text oliota.
             }                                                                               // samalla pidetään lukua nopista mikä on k variable.
@@ -86,13 +110,14 @@ class sumActivity : AppCompatActivity() {
 
                     parent.addView(lL)
 
-                    while (i < 10 && dices >= k) {
+                    while (i < 8 && dices >= k) {
                         val tView = TextView(this)
 
                         tView.layoutParams = LinearLayout.LayoutParams(
                             LinearLayout.LayoutParams.WRAP_CONTENT,
                             ViewGroup.LayoutParams.WRAP_CONTENT,
                         )
+                        tView.id = x+10
                         tView.text = "${myRandomNumbers[k-1]}"
                         tView.textSize = 30.0F
                         tView.setPadding(10,0,10,0)
@@ -101,20 +126,23 @@ class sumActivity : AppCompatActivity() {
                         tView.setTypeface(null, Typeface.BOLD)
 
                         lL.addView(tView)
+                        intenseRoll(k, tView, myRandomNumbers)
                         i++
                         k++
                     }
                 }
 
-            var z = 0                       // tässä vielä summataan kaikki randomit numerot yhteen
-                                            // ja laitetaan tulos sum textviewiin.
+            var z = 0                                                                                   // tässä vielä summataan kaikki randomit numerot yhteen
+                                                                                                        // ja laitetaan tulos sum textviewiin.
             while (dices > z)
             {
-             total = total + myRandomNumbers[z]
+                total += myRandomNumbers[z]
                 z++
             }
-
             sum.text = total.toString()
+
+
+
 
         }
 
@@ -123,8 +151,9 @@ class sumActivity : AppCompatActivity() {
 
         rollButton2.setOnClickListener{
 
-            var rows = (diceAmount.text.toString().toInt()/10).toDouble()                // kutsutaan createwidgets funktiota ja annetaan sille parametreiksi kuinka monta
-            rows = ceil(rows)                                                            // riviä sen pitää tehdä eli noppamäärä/10 ja kuin monta noppaa halutaan.
+            var rows = (diceAmount.text.toString().toInt()/8).toDouble()                // kutsutaan createwidgets funktiota ja annetaan sille parametreiksi kuinka monta
+            rows = ceil(rows)                                                            // riviä sen pitää tehdä eli noppamäärä/8 ja kuin monta noppaa halutaan.
+                                                                                        // ja 8 noppaa yhdelle riville muuten alkaa tulemaan liian ahdasta välillä.
 
             var dices = diceAmount.text.toString().toInt()
             createWidgets(rows.toInt(), dices)
@@ -141,7 +170,7 @@ class sumActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.action_sum->{
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, sumActivity::class.java)
                 startActivity(intent)
                 true
             }
@@ -151,7 +180,7 @@ class sumActivity : AppCompatActivity() {
                 true
             }
             R.id.action_main->{
-                val intent = Intent(this, sumActivity::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 true
             }

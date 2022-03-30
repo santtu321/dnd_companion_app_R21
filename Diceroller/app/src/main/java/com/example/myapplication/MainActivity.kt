@@ -118,7 +118,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.action_sum->{
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, sumActivity::class.java)
                 startActivity(intent)
                 true
             }
@@ -128,7 +128,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.action_main->{
-                val intent = Intent(this, sumActivity::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 true
             }
