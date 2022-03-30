@@ -3,22 +3,15 @@ package com.example.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
 import android.widget.Toast
 import com.android.volley.Request
-import com.android.volley.Response
-import com.android.volley.toolbox.JsonArrayRequest
-import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import org.json.JSONArray
-import org.json.JSONException
 import org.json.JSONObject
 
 class RuleActivity : AppCompatActivity() {
@@ -67,7 +60,7 @@ class RuleActivity : AppCompatActivity() {
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.popup_menu,menu)
         return true
@@ -88,6 +81,11 @@ class RuleActivity : AppCompatActivity() {
             }
             R.id.action_main->{
                 val intent = Intent(this, sumActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_database->{
+                val intent = Intent(this, MainDatabaseActivity::class.java)
                 startActivity(intent)
                 true
             }

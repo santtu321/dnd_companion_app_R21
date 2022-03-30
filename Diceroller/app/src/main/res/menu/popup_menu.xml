@@ -13,5 +13,9 @@
         android:id="@+id/action_rule"
         android:title="rulebook"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_database"
+        android:title="characters"
+        app:showAsAction="never"/>
 
 </menu>

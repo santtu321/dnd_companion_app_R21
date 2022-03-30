@@ -1,17 +1,14 @@
 package com.example.myapplication
 
 import android.content.Intent
-import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.CalendarContract
 import android.view.*
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
-import org.intellij.lang.annotations.JdkConstants
 import kotlin.math.ceil
 import kotlin.random.Random
 
@@ -134,7 +131,7 @@ class sumActivity : AppCompatActivity() {
         }
 
     }
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.popup_menu,menu)
         return true
@@ -155,6 +152,11 @@ class sumActivity : AppCompatActivity() {
             }
             R.id.action_main->{
                 val intent = Intent(this, sumActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_database->{
+                val intent = Intent(this, MainDatabaseActivity::class.java)
                 startActivity(intent)
                 true
             }

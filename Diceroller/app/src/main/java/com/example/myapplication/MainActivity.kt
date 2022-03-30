@@ -6,11 +6,8 @@ import android.widget.*
 import kotlin.random.Random
 import android.content.Intent
 import android.os.Handler
-import android.os.SystemClock
 import android.view.Menu
 import android.view.MenuItem
-import java.util.concurrent.TimeUnit
-import kotlin.time.DurationUnit
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,17 +22,12 @@ class MainActivity : AppCompatActivity() {
     val diceTextView2: TextView = findViewById(R.id.tViewDice2)
     val proficiencyNumber: EditText = findViewById(R.id.eText1)
 
-    val handler = Handler()
 
     var proficiency = 0
 
         fun checkAdvantage(): Int {                                                                 // tämä funktio katsoo mikä radiobuttoneista on selectattu ja palauttaa sen id:n.
             return radioGroup!!.checkedRadioButtonId
         }
-
-    fun intenseRoll() {
-
-    }
 
 
     fun rollTheDice(advantage: String) {
@@ -116,7 +108,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.popup_menu,menu)
         return true
@@ -137,6 +129,11 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.action_main->{
                 val intent = Intent(this, sumActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_database->{
+                val intent = Intent(this, MainDatabaseActivity::class.java)
                 startActivity(intent)
                 true
             }
