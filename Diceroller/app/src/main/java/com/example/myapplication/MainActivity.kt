@@ -8,6 +8,7 @@ import android.content.Intent
 import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
+import android.media.MediaPlayer
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,13 +22,18 @@ class MainActivity : AppCompatActivity() {
     val diceTextView1: TextView = findViewById(R.id.tViewDice1)
     val diceTextView2: TextView = findViewById(R.id.tViewDice2)
     val proficiencyNumber: EditText = findViewById(R.id.eText1)
-
+        var mp: MediaPlayer? = null
 
     var proficiency = 0
 
-        fun checkAdvantage(): Int {                                                                 // tämä funktio katsoo mikä radiobuttoneista on selectattu ja palauttaa sen id:n.
-            return radioGroup!!.checkedRadioButtonId
-        }
+        fun checkAdvantage(): Int {
+            if(radioGroup.checkedRadioButtonId != -1){
+                return radioGroup.checkedRadioButtonId
+            }
+            else{
+                return 2131231081                                                                   //tämä funktio palauttaattaa selectatun radiobuttonin id:n ja jos mitään ei ole valittuna
+            }                                                                                       // eli .checkedRadioButtonId palauttaa -1 palautamme no advantage buttonin id:n
+        }                                                                                           // .xml tiedostossa on jo yksi nappula valittuna, mutta tämä vain jos käyttäjä saa jollain tapaa rikottua ohjelman
 
 
     fun rollTheDice(advantage: String) {
@@ -103,6 +109,8 @@ class MainActivity : AppCompatActivity() {
 
             proficiency = proficiencyNumber.text.toString().toInt()         // katsomme samalla aina kun nappia painetaan, mikä numero on proficiencyssä ja tallennetaan se
             rollTheDice(sAdvantage.toString())
+            mp = MediaPlayer.create(this, R.raw.diceroll)
+            mp!!.start()
         }
 
     }

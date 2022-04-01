@@ -35,7 +35,8 @@
             android:id="@+id/rButton2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="no advantage" />
+            android:text="no advantage"
+            android:checked="true"/>
 
         <RadioButton
             android:id="@+id/rButton3"
