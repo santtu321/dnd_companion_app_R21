@@ -30,6 +30,20 @@ class SpellAdapter(private val context: Context,
         // Get description
         val description = rowView.findViewById(R.id.lvSpellAddress) as TextView
         description.text = cItem.desc
+        // Get range
+        val range = rowView.findViewById(R.id.lvSpellRange) as TextView
+        range.text = cItem.range
+        // Get duration
+        val duration = rowView.findViewById(R.id.lvSpellDuration) as TextView
+        duration.text = cItem.duration
+        // Get damage
+        val damage = rowView.findViewById(R.id.lvSpellDamage) as TextView
+        damage.text = cItem.damage
+        // Get heal
+        val heal_at_slot_level = rowView.findViewById(R.id.lvSpellHeal) as TextView
+        heal_at_slot_level.text = cItem.heal_at_slot_level
+
+
 
         return rowView
     }

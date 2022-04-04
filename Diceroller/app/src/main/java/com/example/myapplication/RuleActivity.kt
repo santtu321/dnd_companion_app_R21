@@ -46,7 +46,11 @@ class RuleActivity : AppCompatActivity() {
                 SpellReportModel(
                     jArray.getString("index"),
                     jArray.getString("name"),
-                    jArray.getString("desc")
+                    jArray.getString("desc").replace("[", "").replace("]", ""),
+                    jArray.getString("range"),
+                    jArray.getString("duration"),
+                    jArray.optString("damage"),
+                    jArray.optString("heal_at_slot_level")
                 )
             )
             val adapter = SpellAdapter(this, aList)
@@ -57,6 +61,8 @@ class RuleActivity : AppCompatActivity() {
             Toast.makeText(this,"Error",Toast.LENGTH_SHORT).show()
         })
         queue.add(request)
+
+
 
     }
 
