@@ -4,10 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Santtu/Desktop/koulu/mobiilikurssin projekti/MyApplication/Diceroller/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.311" />
+        <entry key="..\:/Users/Santtu/Desktop/koulu/mobiilikurssin projekti/MyApplication/Diceroller/app/src/main/res/drawable/border.xml" value="0.2195" />
         <entry key="..\:/Users/Santtu/Desktop/koulu/mobiilikurssin projekti/MyApplication/Diceroller/app/src/main/res/drawable/ic_add_black_24dp.xml" value="0.219" />
         <entry key="..\:/Users/Santtu/Desktop/koulu/mobiilikurssin projekti/MyApplication/Diceroller/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.219" />
         <entry key="..\:/Users/Santtu/Desktop/koulu/mobiilikurssin projekti/MyApplication/Diceroller/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.219" />
         <entry key="..\:/Users/Santtu/Desktop/koulu/mobiilikurssin projekti/MyApplication/Diceroller/app/src/main/res/drawable/ic_launcher_background.xml" value="0.311" />
+        <entry key="..\:/Users/Santtu/Desktop/koulu/mobiilikurssin projekti/MyApplication/Diceroller/app/src/main/res/drawable/smallborder.xml" value="0.2195" />
+        <entry key="..\:/Users/Santtu/Desktop/koulu/mobiilikurssin projekti/MyApplication/Diceroller/app/src/main/res/layout/activity_charactersheet.xml" value="0.365625" />
         <entry key="..\:/Users/Santtu/Desktop/koulu/mobiilikurssin projekti/MyApplication/Diceroller/app/src/main/res/layout/activity_main.xml" value="0.365625" />
         <entry key="..\:/Users/Santtu/Desktop/koulu/mobiilikurssin projekti/MyApplication/Diceroller/app/src/main/res/layout/activity_main2.xml" value="0.365625" />
         <entry key="..\:/Users/Santtu/Desktop/koulu/mobiilikurssin projekti/MyApplication/Diceroller/app/src/main/res/layout/activity_main_database.xml" value="0.365625" />
@@ -19,7 +22,9 @@
         <entry key="..\:/Users/Santtu/Desktop/koulu/mobiilikurssin projekti/MyApplication/Diceroller/app/src/main/res/layout/listview_spell.xml" value="0.365625" />
         <entry key="..\:/Users/Santtu/Desktop/koulu/mobiilikurssin projekti/MyApplication/Diceroller/app/src/main/res/layout/recyclerview_item.xml" value="0.365625" />
         <entry key="..\:/Users/Santtu/Desktop/koulu/mobiilikurssin projekti/MyApplication/Diceroller/app/src/main/res/menu/menu_main.xml" value="0.365625" />
+        <entry key="..\:/Users/Santtu/Desktop/koulu/mobiilikurssin projekti/MyApplication/Diceroller/app/src/main/res/menu/popup_classes_menu.xml" value="0.365625" />
         <entry key="..\:/Users/Santtu/Desktop/koulu/mobiilikurssin projekti/MyApplication/Diceroller/app/src/main/res/menu/popup_menu.xml" value="0.365625" />
+        <entry key="..\:/Users/Santtu/Desktop/koulu/mobiilikurssin projekti/MyApplication/Diceroller/app/src/main/res/menu/popup_races_menu.xml" value="0.18697916666666667" />
         <entry key="..\:/Users/Santtu/Desktop/koulu/mobiilikurssin projekti/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.365625" />
         <entry key="..\:/Users/Santtu/Desktop/koulu/mobiiliohjelmoiti natiiviteknologioilla/koodit/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/koulu/mobiiliohjelmointi projekti/v021/dnd_companion_app_R21-main/Diceroller/app/src/main/res/layout/activity_sum.xml" value="0.31354166666666666" />
@@ -27,7 +32,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

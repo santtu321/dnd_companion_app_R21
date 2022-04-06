@@ -145,6 +145,11 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 true
             }
+            R.id.test->{
+                val intent = Intent(this, Charactersheet::class.java)
+                startActivity(intent)
+                true
+            }
             else->super.onOptionsItemSelected(item)
         }
     }

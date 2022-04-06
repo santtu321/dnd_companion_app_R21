@@ -17,5 +17,9 @@
         android:id="@+id/action_database"
         android:title="characters"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/test"
+        android:title="test"
+        app:showAsAction="never"/>
 
 </menu>

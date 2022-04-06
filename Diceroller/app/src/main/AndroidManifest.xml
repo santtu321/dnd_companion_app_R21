@@ -14,6 +14,9 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Charactersheet"
+            android:exported="false" />
+        <activity
             android:name=".NewCharacterActivity"
             android:exported="false" />
         <activity
@@ -28,7 +31,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
