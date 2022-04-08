@@ -7,6 +7,7 @@
         app:showAsAction="never"/>
     <item
         android:id="@+id/action_sum"
+        android:icon="@drawable/ic_dice"
         android:title="dice roller sum"
         app:showAsAction="never"/>
     <item

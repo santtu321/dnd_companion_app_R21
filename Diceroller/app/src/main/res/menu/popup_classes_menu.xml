@@ -5,46 +5,57 @@
     <item
         android:id="@+id/action_barbarian"
         android:title="Barbarian"
+        android:icon="@drawable/ic_class_barbarian"
         app:showAsAction="never"/>
     <item
         android:id="@+id/action_fighter"
         android:title="Fighter"
+        android:icon="@drawable/ic_class_fighter"
         app:showAsAction="never"/>
     <item
         android:id="@+id/action_rogue"
         android:title="Rogue"
+        android:icon="@drawable/ic_class_rogue"
         app:showAsAction="never"/>
     <item
         android:id="@+id/action_monk"
         android:title="Monk"
+        android:icon="@drawable/ic_class_monk"
         app:showAsAction="never"/>
     <item
         android:id="@+id/action_ranger"
         android:title="Ranger"
+        android:icon="@drawable/ic_class_ranger"
         app:showAsAction="never"/>
     <item
         android:id="@+id/action_warlock"
         android:title="Warlock"
+        android:icon="@drawable/ic_class_warlock"
         app:showAsAction="never"/>
     <item
         android:id="@+id/action_cleric"
         android:title="Cleric"
+        android:icon="@drawable/ic_class_cleric"
         app:showAsAction="never"/>
     <item
         android:id="@+id/action_bard"
         android:title="Bard"
+        android:icon="@drawable/ic_class_bard"
         app:showAsAction="never"/>
     <item
         android:id="@+id/action_sorcerer"
         android:title="Sorcerer"
+        android:icon="@drawable/ic_class_sorcerer"
         app:showAsAction="never"/>
     <item
         android:id="@+id/action_druid"
         android:title="Druid"
+        android:icon="@drawable/ic_class_druid"
         app:showAsAction="never"/>
     <item
         android:id="@+id/action_wizard"
         android:title="Wizard"
+        android:icon="@drawable/ic_class_wizard"
         app:showAsAction="never"/>
 
 </menu>

@@ -44,6 +44,10 @@ class MenuFragment : Fragment() {
                 startActivity(intent)                                                       // this vaan activity
                 true
             }
+            R.id.action_back ->{
+                activity?.onBackPressed()
+                true                                                                        // eli tässä vain mennään entiseen activityyn callaamalla funktio onbackpressed
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }

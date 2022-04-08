@@ -9,6 +9,8 @@ import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
 import android.media.MediaPlayer
+import android.util.Log
+import android.view.View
 
 
 class MainActivity : AppCompatActivity() {
@@ -118,8 +120,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
-        inflater.inflate(R.menu.popup_menu,menu)
-        return true
+        inflater.inflate(R.menu.popup_menu, menu)
+            return true
+
     }                                                                                   //tämä kaikkiin activityihin tekee kolmepisteen appbaariin ja sen jälkeen se näyttää popup menun
                                                                                         // kun siitä klikataan. alempana on myös on funktio kun popupmenun itemeistä klikataan
 
