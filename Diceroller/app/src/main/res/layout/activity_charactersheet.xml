@@ -5,6 +5,7 @@
     android:id="@+id/pLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".Charactersheet">
 
     <TextView
@@ -45,7 +46,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.965" />
+        app:layout_constraintVertical_bias="0.965"
+        android:theme="@style/ThemeOverlay.MySwitch"/>
 
     <TextView
         android:id="@+id/tViewSaveWis"
@@ -221,7 +223,8 @@
         app:layout_constraintHorizontal_bias="0.846"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.965" />
+        app:layout_constraintVertical_bias="0.965"
+        android:theme="@style/ThemeOverlay.MySwitch"/>
 
     <TextView
         android:id="@+id/textView89"
@@ -324,7 +327,8 @@
         app:layout_constraintHorizontal_bias="0.846"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.72" />
+        app:layout_constraintVertical_bias="0.72"
+        android:theme="@style/ThemeOverlay.MySwitch"/>
 
     <TextView
         android:id="@+id/textView83"
@@ -405,7 +409,9 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.725" />
+        app:layout_constraintVertical_bias="0.725"
+        android:theme="@style/ThemeOverlay.MySwitch"
+        />
 
     <EditText
         android:id="@+id/eTextNumberCon"
@@ -625,7 +631,8 @@
         app:layout_constraintHorizontal_bias="0.846"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.479" />
+        app:layout_constraintVertical_bias="0.479"
+        android:theme="@style/ThemeOverlay.MySwitch"/>
 
     <TextView
         android:id="@+id/textView24"
@@ -695,6 +702,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="6dp"
         android:text="Name:"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -760,7 +768,9 @@
         app:layout_constraintHorizontal_bias="0.097"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48" />
+        app:layout_constraintVertical_bias="0.48"
+        android:theme="@style/ThemeOverlay.MySwitch"/>
+
 
     <TextView
         android:id="@+id/textView10"
@@ -940,6 +950,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="Level:"
+        android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/eTextNumberLvl"

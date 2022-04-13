@@ -8,6 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ThemeOverlay.MySwitch" parent="">
+
+        <item name="colorControlActivated">#930C10</item>
+        <item name="colorSwitchThumbNormal">#290000</item>
+        <item name="android:colorForeground">#290000</item>
+
+    </style>
+
+
     <!-- The default font for RecyclerView items is too small.
     The margin is a simple delimiter between the words. -->
     <style name="word_title">

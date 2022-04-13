@@ -158,7 +158,8 @@ class Charactersheet : AppCompatActivity() {
 
             val proficiency = 2+(0.25*(charlevel-1)).nextDown().toInt()                             // tämä funktio laskee levelistä, mikä proficiency sinulla pitäisi olla.
 
-            updateText(proficiency)                                                                 // ja updatetaan modifier ja save textviewit
+            updateText(proficiency)
+                                                                                                                                // ja updatetaan modifier ja save textviewit
             //TODO
             //eli tähän  updatettaa arvot sinne databaseen
             //TODO
