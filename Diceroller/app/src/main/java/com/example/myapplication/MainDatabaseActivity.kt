@@ -69,7 +69,17 @@ class MainDatabaseActivity : AppCompatActivity() {
                                                                                         // kun siitä klikataan. alempana on myös on funktio kun popupmenun itemeistä klikataan
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
+        return when(item.itemId){
+            R.id.action_back->{
+                onBackPressed()
+                true
+            }
+            R.id.action_home->{
+                val intent = Intent(this, RuleActivity::class.java)
+                startActivity(intent)
+                true
+
+            }
             R.id.action_sum->{
                 val intent = Intent(this, sumActivity::class.java)
                 startActivity(intent)
@@ -90,7 +100,12 @@ class MainDatabaseActivity : AppCompatActivity() {
                 startActivity(intent)
                 true
             }
-            else -> super.onOptionsItemSelected(item)
+            R.id.test->{
+                val intent = Intent(this, Charactersheet::class.java)
+                startActivity(intent)
+                true
+            }
+            else->super.onOptionsItemSelected(item)
         }
     }
 }

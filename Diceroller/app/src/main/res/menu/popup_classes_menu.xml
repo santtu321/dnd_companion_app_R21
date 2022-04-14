@@ -6,7 +6,8 @@
         android:id="@+id/action_barbarian"
         android:title="Barbarian"
         android:icon="@drawable/ic_class_barbarian"
-        app:showAsAction="never"/>
+        app:showAsAction="never"
+        />
     <item
         android:id="@+id/action_fighter"
         android:title="Fighter"

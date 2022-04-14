@@ -173,6 +173,16 @@ class sumActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
+            R.id.action_back->{
+                onBackPressed()
+                true
+            }
+            R.id.action_home->{
+                val intent = Intent(this, RuleActivity::class.java)
+                startActivity(intent)
+                true
+
+            }
             R.id.action_sum->{
                 val intent = Intent(this, sumActivity::class.java)
                 startActivity(intent)
@@ -190,6 +200,11 @@ class sumActivity : AppCompatActivity() {
             }
             R.id.action_database->{
                 val intent = Intent(this, MainDatabaseActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.test->{
+                val intent = Intent(this, Charactersheet::class.java)
                 startActivity(intent)
                 true
             }

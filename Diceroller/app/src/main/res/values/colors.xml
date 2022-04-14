@@ -23,6 +23,7 @@
     <color name ="background">#FFFEBD </color>
     <color name ="background_accent">#F7CE65 </color>
     <color name ="text">#290000 </color>
+    <color name ="menubackground">#e5e478</color>
 
 
     <!--switch colors-->
