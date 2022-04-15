@@ -24,6 +24,7 @@
         <item name="android:actionMenuTextColor">@color/text</item>
         -->
 
+
         <!--toimii tämäkin, mutta jostakin syystä tuo actionbaarin popupmenuun jää vähän valkoista ylös ja alas-->
 
 

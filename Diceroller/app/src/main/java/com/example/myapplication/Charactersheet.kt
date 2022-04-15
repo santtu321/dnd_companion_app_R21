@@ -1,10 +1,12 @@
 package com.example.myapplication
 
+import MinMaxFilter
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.drawable.GradientDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.InputFilter
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -50,6 +52,15 @@ class Charactersheet : AppCompatActivity() {
         val intsave : TextView = findViewById(R.id.tViewSaveInt)
         val wissave : TextView = findViewById(R.id.tViewSaveWis)
         val chasave : TextView = findViewById(R.id.tViewSaveCha)
+
+
+        strtext.filters = arrayOf<InputFilter>(MinMaxFilter(1,30))
+        dextext.filters = arrayOf<InputFilter>(MinMaxFilter(1,30))
+        context.filters = arrayOf<InputFilter>(MinMaxFilter(1,30))
+        inttext.filters = arrayOf<InputFilter>(MinMaxFilter(1,30))
+        wistext.filters = arrayOf<InputFilter>(MinMaxFilter(1,30))
+        chatext.filters = arrayOf<InputFilter>(MinMaxFilter(1,30))
+        leveltext.filters = arrayOf<InputFilter>(MinMaxFilter(1,20))
 
 
 
@@ -163,6 +174,14 @@ class Charactersheet : AppCompatActivity() {
             //TODO
             //eli tähän  updatettaa arvot sinne databaseen
             //TODO
+        }
+
+        strmod.setOnClickListener{
+
+            val data:Int = strmod.text.toString().toInt()
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            startActivity(intent)
         }
 
 

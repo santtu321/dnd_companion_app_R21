@@ -1,14 +1,17 @@
 package com.example.myapplication
 
+import MinMaxFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 import kotlin.random.Random
 import android.content.Intent
+import android.graphics.Color
 import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
 import android.media.MediaPlayer
+import android.text.InputFilter
 import android.util.Log
 import android.view.View
 
@@ -18,15 +21,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-    val radioGroup: RadioGroup = findViewById(R.id.rGroup1)
-    val rollButton: Button = findViewById(R.id.bRoll)
-    val textViewResult: TextView = findViewById(R.id.tView2)
-    val diceTextView1: TextView = findViewById(R.id.tViewDice1)
-    val diceTextView2: TextView = findViewById(R.id.tViewDice2)
-    val proficiencyNumber: EditText = findViewById(R.id.eText1)
+        val bundle: Bundle? = intent.extras
+        var proficiency = 0
+        if (bundle != null){
+            proficiency = bundle?.get("data") as Int
+        }
+
+
+
+        val radioGroup: RadioGroup = findViewById(R.id.rGroup1)
+        val rollButton: Button = findViewById(R.id.bRoll)
+        val textViewResult: TextView = findViewById(R.id.tView2)
+        var diceTextView1: TextView = findViewById(R.id.tViewDice1)
+        var diceTextView2: TextView = findViewById(R.id.tViewDice2)
+        var proficiencyNumber: EditText = findViewById(R.id.eText1)
         var mp: MediaPlayer? = null
 
-    var proficiency = 0
+        proficiencyNumber.filters = arrayOf<InputFilter>(MinMaxFilter(-100,100))
+        proficiencyNumber.setText(proficiency.toString())
+
+
 
         fun checkAdvantage(): Int {
             if(radioGroup.checkedRadioButtonId != -1){
@@ -57,6 +71,33 @@ class MainActivity : AppCompatActivity() {
                     runOnUiThread({diceTextView1.text = myRandomNumbers[0].toString()})                                 // riippuen advantagesta. Jos advantagea ei ole se antaa resultiksi ensimmäisen numeron.
                     runOnUiThread({diceTextView2.text = myRandomNumbers[1].toString()})
                     runOnUiThread({textViewResult.text = (mySortedNumbers[0] + proficiency).toString()})
+
+                    when(myRandomNumbers[0])
+                    {
+                        1->{
+                            diceTextView1.setTextColor(Color.RED)
+                        }
+                        20->{
+                            diceTextView1.setTextColor(Color.GREEN)
+                        }
+                    }
+                    when(myRandomNumbers[1])                                                             // ja täss pistetään punaiseksi luvut jos tulee critical failure eli 1 ja vihreäksi
+                    {                                                                                    //jos tulee 20
+                        1->{
+                            diceTextView2.setTextColor(Color.RED)
+                        }
+                        20->{
+                            diceTextView2.setTextColor(Color.GREEN)
+                        }
+                    }
+                    when(mySortedNumbers[0]){
+                        1->{
+                            textViewResult.setTextColor(Color.RED)
+                        }
+                        20->{
+                            textViewResult.setTextColor(Color.GREEN)
+                        }
+                    }
                 }).start()                                                                                  // ja laitetaan threadi pyörimmää
 
             }
@@ -76,6 +117,33 @@ class MainActivity : AppCompatActivity() {
                     runOnUiThread({diceTextView1.text = myRandomNumbers[0].toString()})
                     runOnUiThread({diceTextView2.text = myRandomNumbers[1].toString()})
                     runOnUiThread({textViewResult.text = (myRandomNumbers[0] + proficiency).toString()})
+
+                    when(myRandomNumbers[0])
+                    {
+                        1->{
+                            diceTextView1.setTextColor(Color.RED)
+                        }
+                        20->{
+                            diceTextView1.setTextColor(Color.GREEN)
+                        }
+                    }
+                    when(myRandomNumbers[1])
+                    {
+                        1->{
+                            diceTextView2.setTextColor(Color.RED)
+                        }
+                        20->{
+                            diceTextView2.setTextColor(Color.GREEN)
+                        }
+                    }
+                    when(myRandomNumbers[0]){
+                        1->{
+                            textViewResult.setTextColor(Color.RED)
+                        }
+                        20->{
+                            textViewResult.setTextColor(Color.GREEN)
+                        }
+                    }
                 }).start()
 
             }
@@ -95,6 +163,31 @@ class MainActivity : AppCompatActivity() {
                     runOnUiThread({diceTextView1.text = myRandomNumbers[0].toString()})
                     runOnUiThread({diceTextView2.text = myRandomNumbers[1].toString()})
                     runOnUiThread({textViewResult.text = (mySortedNumbers[0] + proficiency).toString()})
+
+                    when(myRandomNumbers[0]){
+                        1->{
+                            diceTextView1.setTextColor(Color.RED)
+                        }
+                        20->{
+                            diceTextView1.setTextColor(Color.GREEN)
+                        }
+                    }
+                    when(myRandomNumbers[1]){
+                        1->{
+                            diceTextView2.setTextColor(Color.RED)
+                        }
+                        20->{
+                            diceTextView2.setTextColor(Color.GREEN)
+                        }
+                    }
+                    when(mySortedNumbers[0]){
+                        1->{
+                            textViewResult.setTextColor(Color.RED)
+                        }
+                        20->{
+                            textViewResult.setTextColor(Color.GREEN)
+                        }
+                    }
                 }).start()
             }
             else -> {
@@ -106,6 +199,9 @@ class MainActivity : AppCompatActivity() {
         rollButton.setOnClickListener{
             val advantage = checkAdvantage()                                //tässä kun painetaan roll buttonia otamme radiobuttonin textin
                                                                             // ja pistämme sen rolleTheDice funktiolle parametriksi
+            diceTextView1.setTextColor(Color.BLACK)                         //resetoidaan samalla kaikki luvut mustaksi, jotta vihreä tai punainen väri ei jää pysyväksi
+            diceTextView2.setTextColor(Color.BLACK)
+            textViewResult.setTextColor(Color.BLACK)
             val radioButton: RadioButton = findViewById(advantage)
             val sAdvantage = radioButton.text
 
