@@ -176,13 +176,119 @@ class Charactersheet : AppCompatActivity() {
             //TODO
         }
 
-        strmod.setOnClickListener{
-
-            val data:Int = strmod.text.toString().toInt()
+        strmod.setOnClickListener{                                                                  //pistetään jokaiselle textviewille onclick listener jolla aukaistaan noppasovellus
+                                                                                                    //lähetetään samalla dataa sinne, jotta se saa modifierin, jolla rollata
+            val data:Int = strmod.text.toString().toInt()                                           // ja tällä hetkellä roll on aina true eli se tulee rollaamaan aina kun
+            val roll:Boolean = true                                                                 //activity aukaistaan
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
             startActivity(intent)
         }
+        dexmod.setOnClickListener{
+
+            val data:Int = dexmod.text.toString().toInt()
+            val roll:Boolean = true
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
+            startActivity(intent)
+        }
+
+        conmod.setOnClickListener{
+
+            val data:Int = conmod.text.toString().toInt()
+            val roll:Boolean = true
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
+            startActivity(intent)
+        }
+
+        intmod.setOnClickListener{
+
+            val data:Int = intmod.text.toString().toInt()
+            val roll:Boolean = true
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
+            startActivity(intent)
+        }
+
+        wismod.setOnClickListener{
+
+            val data:Int = wismod.text.toString().toInt()
+            val roll:Boolean = true
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
+            startActivity(intent)
+        }
+
+        chamod.setOnClickListener{
+
+            val data:Int = chamod.text.toString().toInt()
+            val roll:Boolean = true
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
+            startActivity(intent)
+        }
+        strsave.setOnClickListener{
+
+            val data:Int = strsave.text.toString().toInt()
+            val roll:Boolean = true
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
+            startActivity(intent)
+        }
+        dexsave.setOnClickListener{
+
+            val data:Int = dexsave.text.toString().toInt()
+            val roll:Boolean = true
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
+            startActivity(intent)
+        }
+        consave.setOnClickListener{
+
+            val data:Int = consave.text.toString().toInt()
+            val roll:Boolean = true
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
+            startActivity(intent)
+        }
+        intsave.setOnClickListener{
+
+            val data:Int = intsave.text.toString().toInt()
+            val roll:Boolean = true
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
+            startActivity(intent)
+        }
+        wissave.setOnClickListener{
+
+            val data:Int = wissave.text.toString().toInt()
+            val roll:Boolean = true
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
+            startActivity(intent)
+        }
+        chasave.setOnClickListener{
+
+            val data:Int = chasave.text.toString().toInt()
+            val roll:Boolean = true
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
+            startActivity(intent)
+        }
+
 
 
 

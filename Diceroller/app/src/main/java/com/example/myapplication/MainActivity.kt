@@ -21,14 +21,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val bundle: Bundle? = intent.extras
-        var proficiency = 0
-        if (bundle != null){
-            proficiency = bundle?.get("data") as Int
-        }
-
-
-
         val radioGroup: RadioGroup = findViewById(R.id.rGroup1)
         val rollButton: Button = findViewById(R.id.bRoll)
         val textViewResult: TextView = findViewById(R.id.tView2)
@@ -36,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         var diceTextView2: TextView = findViewById(R.id.tViewDice2)
         var proficiencyNumber: EditText = findViewById(R.id.eText1)
         var mp: MediaPlayer? = null
+
+        var proficiency = 0
 
         proficiencyNumber.filters = arrayOf<InputFilter>(MinMaxFilter(-100,100))
         proficiencyNumber.setText(proficiency.toString())
@@ -195,7 +189,16 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
+        val bundle: Bundle? = intent.extras                                                         //tässä katsotaan jos on tullut lisäinfoa kun tämä intent on tehty.
+                                                                                                    //sieltä vain tulee data eli mikä proficiency sekä roll true tai false,
+        if (bundle != null){                                                                        //jos roll on true niin laitetaan heti roll funktio pyörimään no advantagella
+            proficiency = bundle?.get("data") as Int
+            if(bundle.get("roll") as Boolean){
+                rollTheDice(checkAdvantage().toString())
+                mp = MediaPlayer.create(this, R.raw.diceroll)
+                mp!!.start()
+            }
+        }
         rollButton.setOnClickListener{
             val advantage = checkAdvantage()                                //tässä kun painetaan roll buttonia otamme radiobuttonin textin
                                                                             // ja pistämme sen rolleTheDice funktiolle parametriksi
