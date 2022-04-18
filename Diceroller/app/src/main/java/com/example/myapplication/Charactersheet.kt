@@ -1,17 +1,20 @@
 package com.example.myapplication
 
+import MinMaxFilter
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.drawable.GradientDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.InputFilter
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
-import android.widget.EditText
-import android.widget.PopupMenu
-import android.widget.TextView
+import android.widget.*
 import androidx.core.content.ContextCompat
+import androidx.core.widget.doOnTextChanged
+import kotlin.math.nextDown
+import kotlin.math.roundToInt
 
 class Charactersheet : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,11 +34,125 @@ class Charactersheet : AppCompatActivity() {
         val inttext : EditText = findViewById(R.id.eTextNumberInt)
         val wistext : EditText = findViewById(R.id.eTextNumberWis)
         val chatext : EditText = findViewById(R.id.eTextNumberCha)
+        val swstr : Switch = findViewById(R.id.sProficiencyStr)
+        val swdex : Switch = findViewById(R.id.sProficiencyDex)
+        val swcon : Switch = findViewById(R.id.sProficiencyCon)
+        val swint : Switch = findViewById(R.id.sProficiencyInt)
+        val swwis : Switch = findViewById(R.id.sProficiencyWis)
+        val swcha : Switch = findViewById(R.id.sProficiencyCha)
+        val strmod : TextView = findViewById(R.id.tViewModifierStr)
+        val dexmod : TextView = findViewById(R.id.tViewModifierDex)
+        val conmod : TextView = findViewById(R.id.tViewModifierCon)
+        val intmod : TextView = findViewById(R.id.tViewModifierInt)
+        val wismod : TextView = findViewById(R.id.tViewModifierWis)
+        val chamod : TextView = findViewById(R.id.tViewModifierCha)
+        val strsave : TextView = findViewById(R.id.tViewSaveStr)
+        val dexsave : TextView = findViewById(R.id.tViewSaveDex)
+        val consave : TextView = findViewById(R.id.tViewSaveCon)
+        val intsave : TextView = findViewById(R.id.tViewSaveInt)
+        val wissave : TextView = findViewById(R.id.tViewSaveWis)
+        val chasave : TextView = findViewById(R.id.tViewSaveCha)
 
+
+        strtext.filters = arrayOf<InputFilter>(MinMaxFilter(1,30))
+        dextext.filters = arrayOf<InputFilter>(MinMaxFilter(1,30))
+        context.filters = arrayOf<InputFilter>(MinMaxFilter(1,30))
+        inttext.filters = arrayOf<InputFilter>(MinMaxFilter(1,30))
+        wistext.filters = arrayOf<InputFilter>(MinMaxFilter(1,30))
+        chatext.filters = arrayOf<InputFilter>(MinMaxFilter(1,30))
+        leveltext.filters = arrayOf<InputFilter>(MinMaxFilter(1,20))
+
+
+
+        fun modifierFromScore(score: Int): String {
+            when(score){
+                1 -> {return "-5"}
+                2,3 ->{return "-4"}
+                4,5 ->{return "-3"}
+                6,7 ->{return "-2"}
+                8,9 ->{return "-1"}
+                10,11 ->{return "0"}
+                12,13 ->{return "1"}
+                14,15 ->{return "2"}
+                16,17 ->{return "3"}
+                18,19 ->{return "4"}
+                20,21 ->{return "5"}
+                22,23 ->{return "6"}
+                24,25 ->{return "7"}
+                26,27 ->{return "8"}
+                28,29 ->{return "9"}
+                30 ->{return "10"}
+                else ->{return "0"}
+
+            }
+        }
+
+        fun updateText(proficiency: Int){
+
+            val strpro = swstr.isChecked
+            val dexpro = swdex.isChecked
+            val conpro = swcon.isChecked
+            val intpro = swint.isChecked
+            val wispro = swwis.isChecked
+            val chapro = swcha.isChecked
+
+
+
+            strmod.text = modifierFromScore(strtext.text.toString().toInt())
+            dexmod.text = modifierFromScore(dextext.text.toString().toInt())
+            conmod.text = modifierFromScore(context.text.toString().toInt())
+            intmod.text = modifierFromScore(inttext.text.toString().toInt())
+            wismod.text = modifierFromScore(wistext.text.toString().toInt())
+            chamod.text = modifierFromScore(chatext.text.toString().toInt())                        //eli modifieri saadaan scoresta ja tietty score antaa tietyn modifierin. se näkyy tuossa modifierFromScore funktiosta
+
+
+            if(strpro){
+                strsave.text = (modifierFromScore(strtext.text.toString().toInt()).toInt()+proficiency).toString()              // ja sitten tässä katsotaan, että onko proficiency checkattu
+            }                                                                                                            // ja jos on, niin silloin savearvo pitäisi olla proficiency+modifier
+            else{                                                                                                       // ja proficiency saadaan kun tätä funktiota callataan.
+                strsave.text = modifierFromScore(strtext.text.toString().toInt())                                       //jos proficiencyä ei ole tähän, niin silloin save arvo on sama kuin modifier
+            }
+
+            if(dexpro){
+                dexsave.text = (modifierFromScore(dextext.text.toString().toInt()).toInt()+proficiency).toString()
+            }
+            else{
+                dexsave.text = modifierFromScore(dextext.text.toString().toInt())
+            }
+
+            if(conpro){
+                consave.text = (modifierFromScore(context.text.toString().toInt()).toInt()+proficiency).toString()
+            }
+            else{
+                consave.text = modifierFromScore(context.text.toString().toInt())
+            }
+
+            if(intpro){
+                intsave.text = (modifierFromScore(inttext.text.toString().toInt()).toInt()+proficiency).toString()
+            }
+            else{
+                intsave.text = modifierFromScore(inttext.text.toString().toInt())
+            }
+
+            if(wispro){
+                wissave.text = (modifierFromScore(wistext.text.toString().toInt()).toInt()+proficiency).toString()
+            }
+            else{
+                wissave.text = modifierFromScore(wistext.text.toString().toInt())
+            }
+
+            if(chapro){
+                chasave.text = (modifierFromScore(chatext.text.toString().toInt()).toInt()+proficiency).toString()
+            }
+            else{
+                chasave.text = modifierFromScore(chatext.text.toString().toInt())
+            }
+
+        }
         updatebutton.setOnClickListener{
             val name = nametext.text.toString()
             val race = racetext.text.toString()
-            val charlevel = leveltext.text.toString().toInt()
+            val charlevel = leveltext.text.toString().toInt()                                       //buttoni tallettaa arvot, mitkä on pistetty paikoilleen ja tallentaa ne databaseen
             val charclass = classtext.text.toString()
             val str = strtext.text.toString().toInt()
             val dex = dextext.text.toString().toInt()
@@ -43,18 +160,142 @@ class Charactersheet : AppCompatActivity() {
             val int = inttext.text.toString().toInt()
             val wis = wistext.text.toString().toInt()
             val cha = chatext.text.toString().toInt()
+            val strpro = swstr.isChecked                                                            //eli proficiency tallennetaan ture/falsena ja statsit ja leveli talletetaan inttinä
+            val dexpro = swdex.isChecked                                                            // ja loput eli nimi, race sekä classi tallennetaan stringinä.
+            val conpro = swcon.isChecked
+            val intpro = swint.isChecked
+            val wispro = swwis.isChecked
+            val chapro = swcha.isChecked
 
+            val proficiency = 2+(0.25*(charlevel-1)).nextDown().toInt()                             // tämä funktio laskee levelistä, mikä proficiency sinulla pitäisi olla.
+
+            updateText(proficiency)
+                                                                                                                                // ja updatetaan modifier ja save textviewit
             //TODO
             //eli tähän  updatettaa arvot sinne databaseen
             //TODO
         }
+
+        strmod.setOnClickListener{                                                                  //pistetään jokaiselle textviewille onclick listener jolla aukaistaan noppasovellus
+                                                                                                    //lähetetään samalla dataa sinne, jotta se saa modifierin, jolla rollata
+            val data:Int = strmod.text.toString().toInt()                                           // ja tällä hetkellä roll on aina true eli se tulee rollaamaan aina kun
+            val roll:Boolean = true                                                                 //activity aukaistaan
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
+            startActivity(intent)
+        }
+        dexmod.setOnClickListener{
+
+            val data:Int = dexmod.text.toString().toInt()
+            val roll:Boolean = true
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
+            startActivity(intent)
+        }
+
+        conmod.setOnClickListener{
+
+            val data:Int = conmod.text.toString().toInt()
+            val roll:Boolean = true
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
+            startActivity(intent)
+        }
+
+        intmod.setOnClickListener{
+
+            val data:Int = intmod.text.toString().toInt()
+            val roll:Boolean = true
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
+            startActivity(intent)
+        }
+
+        wismod.setOnClickListener{
+
+            val data:Int = wismod.text.toString().toInt()
+            val roll:Boolean = true
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
+            startActivity(intent)
+        }
+
+        chamod.setOnClickListener{
+
+            val data:Int = chamod.text.toString().toInt()
+            val roll:Boolean = true
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
+            startActivity(intent)
+        }
+        strsave.setOnClickListener{
+
+            val data:Int = strsave.text.toString().toInt()
+            val roll:Boolean = true
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
+            startActivity(intent)
+        }
+        dexsave.setOnClickListener{
+
+            val data:Int = dexsave.text.toString().toInt()
+            val roll:Boolean = true
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
+            startActivity(intent)
+        }
+        consave.setOnClickListener{
+
+            val data:Int = consave.text.toString().toInt()
+            val roll:Boolean = true
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
+            startActivity(intent)
+        }
+        intsave.setOnClickListener{
+
+            val data:Int = intsave.text.toString().toInt()
+            val roll:Boolean = true
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
+            startActivity(intent)
+        }
+        wissave.setOnClickListener{
+
+            val data:Int = wissave.text.toString().toInt()
+            val roll:Boolean = true
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
+            startActivity(intent)
+        }
+        chasave.setOnClickListener{
+
+            val data:Int = chasave.text.toString().toInt()
+            val roll:Boolean = true
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("data", data)
+            intent.putExtra("roll", roll)
+            startActivity(intent)
+        }
+
 
 
 
         racebutton.setOnClickListener{
             val popupMenu: PopupMenu = PopupMenu(this,classbutton)
             popupMenu.menuInflater.inflate(R.menu.popup_races_menu , popupMenu.menu)
-            popupMenu.setOnMenuItemClickListener (PopupMenu.OnMenuItemClickListener {item ->
+            popupMenu.setOnMenuItemClickListener (PopupMenu.OnMenuItemClickListener {item ->            //perus popup menu classeille sekä racelle.
                 when(item.itemId){
                     R.id.action_human->{
                         racetext.text = "Human"
@@ -145,7 +386,18 @@ class Charactersheet : AppCompatActivity() {
 
                 }
             })
-            popupMenu.show()
+            try {
+                val fieldMPopup = PopupMenu::class.java.getDeclaredField("mPopup")                  //tämä vain siksi, että saadaan iconit näkyville, muuten ei näy iconeja popupmenussa.
+                fieldMPopup.isAccessible = true
+                val mPopup = fieldMPopup.get(popupMenu)
+                mPopup.javaClass
+                    .getDeclaredMethod("setForceShowIcon", Boolean::class.java)
+                    .invoke(mPopup, true)
+            } catch (e: Exception) {
+                Log.e("Main", "Error showing menu icons.", e)
+            } finally {
+                popupMenu.show()
+            }
         }
 
     }
@@ -158,6 +410,16 @@ class Charactersheet : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
+            R.id.action_back->{
+                onBackPressed()
+                true
+            }
+            R.id.action_home->{
+                val intent = Intent(this, RuleActivity::class.java)
+                startActivity(intent)
+                true
+
+            }
             R.id.action_sum->{
                 val intent = Intent(this, sumActivity::class.java)
                 startActivity(intent)

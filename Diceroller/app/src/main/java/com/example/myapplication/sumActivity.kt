@@ -1,10 +1,13 @@
 package com.example.myapplication
 
+import MinMaxFilter
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.Typeface
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.InputFilter
 import android.view.*
 import android.widget.Button
 import android.widget.EditText
@@ -26,23 +29,50 @@ class sumActivity : AppCompatActivity() {
         val sum: TextView = findViewById(R.id.tViewSum)
         var mp: MediaPlayer? = null
 
+        diceAmount.filters = arrayOf<InputFilter>(MinMaxFilter(1,100))                                    //tämä filteroi käyttäjäninputin, ettei hän pysty pistämään muita lukuja kuin 1-100
+        diceSides.filters = arrayOf<InputFilter>(MinMaxFilter(1,100))                                     //tuo MinMaxFilter koodi löytyy InputFilter.kt tiedostosta
+
         fun intenseRoll(index: Int, tView : TextView, myRandomNumbers: List<Int>) = runBlocking {         // pistetään tässä nuo threadit omaan funktioon, jossa käytetään co
             launch {                                                                                      //routineja, koska muuten yksittäinen threadi ei pysty tekemään kaikkia
                 Thread(Runnable{                                                                          // numeroita yhtäaikaa ja siitä tulisi sekava.
 
                     var i = 0
+                    var total = 0
+                    var dices = diceAmount.text.toString().toInt()
+                    val maxroll = diceSides.text.toString().toInt()
 
                     while(i < 20){
                         if(i != 19){
-                            runOnUiThread({tView.text = (1..20).random().toString()})                      //toimii samalla tavalla kuin mainactivityssäkin olevat threadit.
+                            runOnUiThread({tView.text = (1..maxroll).random().toString()})                 //toimii samalla tavalla kuin mainactivityssäkin olevat threadit.
                                                                                                            //ainoa ero on, että tätä funktiota kutsutaan aina kun uusi textview olio luodaan
                             Thread.sleep(50)                                                         // eli tämä funktio pyörittää yhtä oliota kerralla.
                         }
                         else{
                             runOnUiThread({tView.text = myRandomNumbers[index-1].toString()})
+
+                            when(myRandomNumbers[index-1]){                                             //tässä sitten katsotaan, että jos tuli 1, niin laitetaan tekstin väri punaiseksi,
+                                1->{                                                                    //ja jos tuli maksimiluku nopasta, niin laitetaan teksti vihreäksi.
+
+                                    tView.setTextColor(Color.RED)
+                                }
+                                maxroll ->{
+
+                                    tView.setTextColor(Color.GREEN)
+                                }
+                            }
                         }
                         i++
                     }
+                    var z = 0                                                                               // tässä vielä summataan kaikki randomit numerot yhteen
+                                                                                                            // ja laitetaan tulos sum textviewiin.
+                                                                                                            //laitetaan tämä tähän, koska ennen se oli tuolla createwidgets funktion lopussa,
+                    while (dices > z)                                                                       //jonka takia tulos tuli ennen kuin nopat olivat rollanneet
+                    {                                                                                       //nyt tulos tulee vasta kun nopat ovat rullanneet
+                        total += myRandomNumbers[z]
+                        z++
+                    }
+                    sum.text = total.toString()
+
                 }).start()
             }
         }
@@ -50,11 +80,9 @@ class sumActivity : AppCompatActivity() {
 
             var x = 1
             var k = 1
-            var total = 0
 
 
-
-            val myRandomNumbers = List (dices){Random.nextInt(1,diceSides.text.toString().toInt()+1)}         //tehdään ensimmäiseksi randomit numerot
+            val myRandomNumbers = List (dices){Random.nextInt(1,diceSides.text.toString().toInt()+1)}  //tehdään ensimmäiseksi randomit numerot
                                                                                                                  // listan koko ja numerot määrääntyy siitä, mitä käyttäjä antoi parametreiksi
 
             val parent: LinearLayout = findViewById(R.id.pLayout)                                   //tehdään olio meidän linearlayoutista, johon pistetään kaikki tulevat layoutit
@@ -83,6 +111,9 @@ class sumActivity : AppCompatActivity() {
                     )
                     tView.id = x+10
                     tView.text = "${myRandomNumbers[k-1]}"
+
+
+
                     tView.textSize = 30.0F
                     tView.setPadding(10,0,10,0)                                // taas parametrejä text oliolle.
                     tView.gravity = Gravity.CENTER
@@ -134,16 +165,6 @@ class sumActivity : AppCompatActivity() {
                     }
                 }
 
-            var z = 0                                                                                   // tässä vielä summataan kaikki randomit numerot yhteen
-                                                                                                        // ja laitetaan tulos sum textviewiin.
-            while (dices > z)
-            {
-                total += myRandomNumbers[z]
-                z++
-            }
-            sum.text = total.toString()
-
-
 
 
         }
@@ -173,6 +194,16 @@ class sumActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
+            R.id.action_back->{
+                onBackPressed()
+                true
+            }
+            R.id.action_home->{
+                val intent = Intent(this, RuleActivity::class.java)
+                startActivity(intent)
+                true
+
+            }
             R.id.action_sum->{
                 val intent = Intent(this, sumActivity::class.java)
                 startActivity(intent)
@@ -190,6 +221,11 @@ class sumActivity : AppCompatActivity() {
             }
             R.id.action_database->{
                 val intent = Intent(this, MainDatabaseActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.test->{
+                val intent = Intent(this, Charactersheet::class.java)
                 startActivity(intent)
                 true
             }

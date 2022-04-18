@@ -1,18 +1,25 @@
 package com.example.myapplication
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ListView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import org.json.JSONObject
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+
 
 class RuleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,47 +27,80 @@ class RuleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rule)
 
+
         //assign values
         var btn_getData = findViewById<Button>(R.id.btn_getData)
         var et_dataInput = findViewById<EditText>(R.id.et_dataInput)
 
 
+        et_dataInput.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                // TODO Auto-generated method stub
+            }
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+                // TODO Auto-generated method stub
+            }
+            override fun afterTextChanged(s: Editable) {
+                ""
+            }
+        })
+
+
+
+
         //listeners
         btn_getData.setOnClickListener {
             getDataSpells()
+
         }
     }
 
     fun getDataSpells(){
-        var lv_dndData = findViewById<ListView>(R.id.lv_dndData)
-        val aList = arrayListOf<SpellReportModel>()
+        var rvSpellData = findViewById<RecyclerView>(R.id.rvSpellData)
         var et_dataInput = findViewById<EditText>(R.id.et_dataInput)
+
+        //val aList = listOf<SpellReportModel>()
+
         val urlSpells = "https://www.dnd5eapi.co/api/spells/" + et_dataInput.getText().toString()
         val queue = Volley.newRequestQueue(this)
         val request = StringRequest(Request.Method.GET,urlSpells, { response ->
-            val data = response.toString()
-            var jArray = JSONObject(data)
-            //  Toast.makeText(this,"Data" + jArray,Toast.LENGTH_SHORT).show()
+            /*  val data = response.toString()
+              var jArray = JSONObject(data)
+              //val damageScore = jArray.getJSONObject("damage").getString("damage_at_slot_level")
 
-            aList.add(
-                SpellReportModel(
-                    jArray.getString("index"),
-                    jArray.getString("name"),
-                    jArray.getString("desc").replace("[", "").replace("]", ""),
-                    jArray.getString("range"),
-                    jArray.getString("duration"),
-                    jArray.optString("damage"),
-                    jArray.optString("heal_at_slot_level")
-                )
-            )
-            val adapter = SpellAdapter(this, aList)
-            lv_dndData.adapter = adapter
+
+              aList.add(
+                  SpellReportModel(
+                      jArray.getString("index"),
+                      jArray.getString("name"),
+                      jArray.getString("desc").replace("[", "").replace("]", ""),
+                      jArray.getString("range"),
+                      jArray.getString("duration"),
+                      jArray.getJSONObject("damage").getJSONObject("damage_at_slot_level").getString("3"),
+                      jArray.optString("heal_at_slot_level"),
+
+                  )
+              )*/
+
+
+            var data = response.toString()
+            Log.d("Logs", data.toString())
+
+            var SpellReportModel = Gson().fromJson(data, SpellReportModel::class.java)
+
+
+            Log.d("Logs", SpellReportModel.toString())
+
+            rvSpellData.adapter = SpellAdapter(SpellReportModel.spellReportList)
+
+
 
 
         }, {
             Toast.makeText(this,"Error",Toast.LENGTH_SHORT).show()
         })
         queue.add(request)
+
 
 
 
@@ -71,7 +111,7 @@ class RuleActivity : AppCompatActivity() {
         inflater.inflate(R.menu.popup_menu,menu)
         return true
     }                                                                                   //tämä kaikkiin activityihin tekee kolmepisteen appbaariin ja sen jälkeen se näyttää popup menun
-                                                                                        // kun siitä klikataan. alempana on myös on funktio kun popupmenun itemeistä klikataan
+    // kun siitä klikataan. alempana on myös on funktio kun popupmenun itemeistä klikataan
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
@@ -98,5 +138,4 @@ class RuleActivity : AppCompatActivity() {
             else->super.onOptionsItemSelected(item)
         }
     }
-
 }
