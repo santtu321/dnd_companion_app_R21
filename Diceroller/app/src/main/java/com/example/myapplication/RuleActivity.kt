@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -17,16 +18,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.myapplication.databinding.ActivityRuleBinding
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import org.json.JSONObject
 
 
 class RuleActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityRuleBinding
+    private lateinit var adapter: SpellAdapter
+    private var aList: ArrayList<SpellReportModel> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_rule)
+        binding = ActivityRuleBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+        initRV()
 
         //assign values
         var btn_getData = findViewById<Button>(R.id.btn_getData)
@@ -55,45 +63,45 @@ class RuleActivity : AppCompatActivity() {
         }
     }
 
+    private fun initRV() {
+        adapter = SpellAdapter(aList)
+        binding.rvSpellData.layoutManager = LinearLayoutManager(this)
+        binding.rvSpellData.adapter = adapter
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
     fun getDataSpells(){
-        var rvSpellData = findViewById<RecyclerView>(R.id.rvSpellData)
         var et_dataInput = findViewById<EditText>(R.id.et_dataInput)
 
-        //val aList = listOf<SpellReportModel>()
 
-        val urlSpells = "https://www.dnd5eapi.co/api/spells/" + et_dataInput.getText().toString()
+
+        val urlSpells = "https://www.dnd5eapi.co/api/spells/fireball"
         val queue = Volley.newRequestQueue(this)
         val request = StringRequest(Request.Method.GET,urlSpells, { response ->
-            /*  val data = response.toString()
+              val data = response.toString()
               var jArray = JSONObject(data)
-              //val damageScore = jArray.getJSONObject("damage").getString("damage_at_slot_level")
 
 
-              aList.add(
-                  SpellReportModel(
-                      jArray.getString("index"),
-                      jArray.getString("name"),
-                      jArray.getString("desc").replace("[", "").replace("]", ""),
-                      jArray.getString("range"),
-                      jArray.getString("duration"),
-                      jArray.getJSONObject("damage").getJSONObject("damage_at_slot_level").getString("3"),
-                      jArray.optString("heal_at_slot_level"),
+            aList.add(
+                SpellReportModel(
+                    jArray.optString("name"),
+                    jArray.optString("desc").replace("[", "").replace("]", ""),
+                    jArray.optString("range"),
+                    jArray.optString("duration"),
+                    jArray.getJSONObject("damage").getJSONObject("damage_type").optString("name"),
+                    jArray.getJSONObject("damage").getJSONObject("damage_at_slot_level").optString("3"),
+                    jArray.getJSONObject("damage").getJSONObject("damage_at_slot_level").optString("4"),
+                    jArray.getJSONObject("damage").getJSONObject("damage_at_slot_level").optString("5"),
+                    jArray.getJSONObject("damage").getJSONObject("damage_at_slot_level").optString("6"),
+                    jArray.getJSONObject("damage").getJSONObject("damage_at_slot_level").optString("7"),
+                    jArray.getJSONObject("damage").getJSONObject("damage_at_slot_level").optString("8"),
+                    jArray.getJSONObject("damage").getJSONObject("damage_at_slot_level").optString("9"),
+                    jArray.optString("casting_time"),
+                    jArray.getJSONObject("school").optString("name"),
+                    )
+            )
 
-                  )
-              )*/
-
-
-            var data = response.toString()
-            Log.d("Logs", data.toString())
-
-            var SpellReportModel = Gson().fromJson(data, SpellReportModel::class.java)
-
-
-            Log.d("Logs", SpellReportModel.toString())
-
-            rvSpellData.adapter = SpellAdapter(SpellReportModel.spellReportList)
-
-
+            adapter.notifyDataSetChanged()
 
 
         }, {
@@ -111,7 +119,7 @@ class RuleActivity : AppCompatActivity() {
         inflater.inflate(R.menu.popup_menu,menu)
         return true
     }                                                                                   //tämä kaikkiin activityihin tekee kolmepisteen appbaariin ja sen jälkeen se näyttää popup menun
-    // kun siitä klikataan. alempana on myös on funktio kun popupmenun itemeistä klikataan
+                                                                                        // kun siitä klikataan. alempana on myös on funktio kun popupmenun itemeistä klikataan
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
