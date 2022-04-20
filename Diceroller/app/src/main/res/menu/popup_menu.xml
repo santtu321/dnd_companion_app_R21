@@ -32,7 +32,28 @@
                 android:id="@+id/action_rule"
                 android:title="rulebook"
                 android:icon="@drawable/ic_baseline_menu_book_24"
-                app:showAsAction="ifRoom"/>
+                app:showAsAction="ifRoom">
+
+                <menu>
+
+                    <item
+                        android:id="@+id/action_rule_spells"
+                        android:title="spells"
+                        android:icon="@drawable/ic_baseline_add_24"
+                        app:showAsAction="ifRoom"/>
+
+                    <item
+                        android:id="@+id/action_rule_monster"
+                        android:title="monsters"
+                        android:icon="@drawable/ic_baseline_add_24"
+                        app:showAsAction="ifRoom"/>
+
+            </menu>
+
+            </item>
+
+
+
             <item
                 android:id="@+id/action_database"
                 android:title="characters"

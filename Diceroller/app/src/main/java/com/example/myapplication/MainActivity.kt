@@ -243,7 +243,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 true
             }
-            R.id.action_rule->{
+            R.id.action_rule_spells->{
                 val intent = Intent(this, RuleActivity::class.java)
                 startActivity(intent)
                 true
