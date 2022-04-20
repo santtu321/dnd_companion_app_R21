@@ -248,6 +248,11 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 true
             }
+            R.id.action_rule_monster->{
+                val intent = Intent(this, RuleActivityMonsters::class.java)
+                startActivity(intent)
+                true
+            }
             R.id.action_main->{
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)

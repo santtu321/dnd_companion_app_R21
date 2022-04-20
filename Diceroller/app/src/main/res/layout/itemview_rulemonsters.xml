@@ -10,7 +10,7 @@
         android:id="@+id/tv_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
         android:text="Name: asdakjnad"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,146 +18,148 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_desc"
+        android:id="@+id/tv_size"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:text="Name: asdakjnad"
         android:textColor="@color/black"
-        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/tv_name"
         app:layout_constraintTop_toBottomOf="@id/tv_name" />
 
     <TextView
-        android:id="@+id/tv_range"
+        android:id="@+id/tv_type"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:text="Name: asdakjnad"
         android:textColor="@color/black"
-        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/tv_desc"
-        app:layout_constraintTop_toBottomOf="@id/tv_desc" />
+        app:layout_constraintStart_toStartOf="@id/tv_size"
+        app:layout_constraintTop_toBottomOf="@id/tv_size" />
 
     <TextView
-        android:id="@+id/tv_duration"
+        android:id="@+id/tv_alignment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:text="Name: asdakjnad"
         android:textColor="@color/black"
-        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/tv_range"
-        app:layout_constraintTop_toBottomOf="@id/tv_range" />
+        app:layout_constraintStart_toStartOf="@id/tv_type"
+        app:layout_constraintTop_toBottomOf="@id/tv_type" />
 
     <TextView
-        android:id="@+id/tv_damageType"
+        android:id="@+id/tv_armorClass"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:text="Name: asdakjnad"
         android:textColor="@color/black"
-        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/tv_duration"
-        app:layout_constraintTop_toBottomOf="@id/tv_duration" />
+        app:layout_constraintStart_toStartOf="@id/tv_alignment"
+        app:layout_constraintTop_toBottomOf="@id/tv_alignment" />
 
     <TextView
-        android:id="@+id/tv_damageAtSlotLevelThree"
+        android:id="@+id/tv_hitPoints"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:text="Name: asdakjnad"
         android:textColor="@color/black"
-        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/tv_damageType"
-        app:layout_constraintTop_toBottomOf="@id/tv_damageType" />
+        app:layout_constraintStart_toStartOf="@id/tv_armorClass"
+        app:layout_constraintTop_toBottomOf="@id/tv_armorClass" />
 
     <TextView
-        android:id="@+id/tv_damageAtSlotLevelFour"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:textColor="@color/black"
-        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/tv_damageAtSlotLevelThree"
-        app:layout_constraintTop_toBottomOf="@id/tv_damageAtSlotLevelThree" />
-
-    <TextView
-        android:id="@+id/tv_damageAtSlotLevelFive"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:textColor="@color/black"
-        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/tv_damageAtSlotLevelFour"
-        app:layout_constraintTop_toBottomOf="@id/tv_damageAtSlotLevelFour" />
-
-    <TextView
-        android:id="@+id/tv_damageAtSlotLevelSix"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:textColor="@color/black"
-        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/tv_damageAtSlotLevelFive"
-        app:layout_constraintTop_toBottomOf="@id/tv_damageAtSlotLevelFive" />
-
-    <TextView
-        android:id="@+id/tv_damageAtSlotLevelSeven"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:textColor="@color/black"
-        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/tv_damageAtSlotLevelSix"
-        app:layout_constraintTop_toBottomOf="@id/tv_damageAtSlotLevelSix" />
-
-    <TextView
-        android:id="@+id/tv_damageAtSlotLevelEight"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:textColor="@color/black"
-        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/tv_damageAtSlotLevelSeven"
-        app:layout_constraintTop_toBottomOf="@id/tv_damageAtSlotLevelSeven" />
-
-    <TextView
-        android:id="@+id/tv_damageAtSlotLevelNine"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:textColor="@color/black"
-        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/tv_damageAtSlotLevelEight"
-        app:layout_constraintTop_toBottomOf="@id/tv_damageAtSlotLevelEight" />
-
-    <TextView
-        android:id="@+id/tv_castingTime"
+        android:id="@+id/tv_hitDice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:text="Name: asdakjnad"
         android:textColor="@color/black"
-        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/tv_damageAtSlotLevelNine"
-        app:layout_constraintTop_toBottomOf="@id/tv_damageAtSlotLevelNine" />
+        app:layout_constraintStart_toStartOf="@id/tv_hitPoints"
+        app:layout_constraintTop_toBottomOf="@id/tv_hitPoints" />
 
     <TextView
-        android:id="@+id/tv_school"
+        android:id="@+id/tv_strength"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:text="Name: asdakjnad"
         android:textColor="@color/black"
-        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/tv_castingTime"
-        app:layout_constraintTop_toBottomOf="@id/tv_castingTime" />
+        app:layout_constraintStart_toStartOf="@id/tv_hitDice"
+        app:layout_constraintTop_toBottomOf="@id/tv_hitDice" />
+
+    <TextView
+        android:id="@+id/tv_dexterity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:text="Name: asdakjnad"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_strength"
+        app:layout_constraintTop_toBottomOf="@id/tv_strength" />
+
+    <TextView
+        android:id="@+id/tv_constitution"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:text="Name: asdakjnad"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_dexterity"
+        app:layout_constraintTop_toBottomOf="@id/tv_dexterity" />
+
+    <TextView
+        android:id="@+id/tv_intelligence"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:text="Name: asdakjnad"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_constitution"
+        app:layout_constraintTop_toBottomOf="@id/tv_constitution" />
+
+    <TextView
+        android:id="@+id/tv_wisdom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:text="Name: asdakjnad"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_intelligence"
+        app:layout_constraintTop_toBottomOf="@id/tv_intelligence" />
+
+    <TextView
+        android:id="@+id/tv_charisma"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:text="Name: asdakjnad"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_wisdom"
+        app:layout_constraintTop_toBottomOf="@id/tv_wisdom" />
+
+    <TextView
+        android:id="@+id/tv_language"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Name: asdakjnad"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_charisma"
+        app:layout_constraintTop_toBottomOf="@id/tv_charisma" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

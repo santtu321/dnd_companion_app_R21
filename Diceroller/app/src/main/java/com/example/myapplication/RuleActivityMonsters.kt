@@ -25,10 +25,10 @@ import com.google.gson.GsonBuilder
 import org.json.JSONObject
 
 
-class RuleActivity : AppCompatActivity() {
+class RuleActivityMonsters : AppCompatActivity() {
     private lateinit var binding: ActivityRuleBinding
-    private lateinit var adapter: SpellAdapter
-    private var aList: ArrayList<SpellReportModel> = ArrayList()
+    private lateinit var adapter: SpellAdapterMonster
+    private var aList: ArrayList<MonsterReportModel> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -58,47 +58,49 @@ class RuleActivity : AppCompatActivity() {
 
 
         //listeners
-        btn_getData.setOnClickListener{
+        btn_getData.setOnClickListener {
 
-            getDataSpells()
+            getDataMonsters()
         }
     }
 
 
     private fun initRV() {
-        adapter = SpellAdapter(aList)
+        adapter = SpellAdapterMonster(aList)
         binding.rvSpellData.layoutManager = LinearLayoutManager(this)
         binding.rvSpellData.adapter = adapter
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun getDataSpells(){
+    fun getDataMonsters(){
         var et_dataInput = findViewById<EditText>(R.id.et_dataInput)
         aList.clear()
-        val urlSpells = "https://www.dnd5eapi.co/api/spells/" + et_dataInput.text.toString()
+        val urlSpells = "https://www.dnd5eapi.co/api/monsters/" + et_dataInput.text.toString()
         val queue = Volley.newRequestQueue(this)
         val request = StringRequest(Request.Method.GET,urlSpells, { response ->
-              val data = response.toString()
-              var jArray = JSONObject(data)
+            val data = response.toString()
+            var jArray = JSONObject(data)
 
 
             aList.add(
-                SpellReportModel(
+                MonsterReportModel(
                     jArray.optString("name"),
-                    jArray.optString("desc").replace("[", "").replace("]", ""),
-                    jArray.optString("range"),
-                    jArray.optString("duration"),
-                    jArray.getJSONObject("damage").getJSONObject("damage_type").optString("name"),
-                    jArray.getJSONObject("damage").getJSONObject("damage_at_slot_level").optString("3"),
-                    jArray.getJSONObject("damage").getJSONObject("damage_at_slot_level").optString("4"),
-                    jArray.getJSONObject("damage").getJSONObject("damage_at_slot_level").optString("5"),
-                    jArray.getJSONObject("damage").getJSONObject("damage_at_slot_level").optString("6"),
-                    jArray.getJSONObject("damage").getJSONObject("damage_at_slot_level").optString("7"),
-                    jArray.getJSONObject("damage").getJSONObject("damage_at_slot_level").optString("8"),
-                    jArray.getJSONObject("damage").getJSONObject("damage_at_slot_level").optString("9"),
-                    jArray.optString("casting_time"),
-                    jArray.getJSONObject("school").optString("name"),
-                    )
+                    jArray.optString("size"),
+                    jArray.optString("type"),
+                    jArray.optString("alignment"),
+                    jArray.optString("armor_class"),
+                    jArray.optString("hit_points"),
+                    jArray.optString("hit_dice"),
+                    jArray.optString("strength"),
+                    jArray.optString("dexterity"),
+                    jArray.optString("constitution"),
+                    jArray.optString("intelligence"),
+                    jArray.optString("wisdom"),
+                    jArray.optString("charisma"),
+                    jArray.optString("languages"),
+
+
+                )
             )
 
             adapter.notifyDataSetChanged()
