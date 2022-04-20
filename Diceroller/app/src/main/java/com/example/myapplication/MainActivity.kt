@@ -193,6 +193,7 @@ class MainActivity : AppCompatActivity() {
                                                                                                     //sieltä vain tulee data eli mikä proficiency sekä roll true tai false,
         if (bundle != null){                                                                        //jos roll on true niin laitetaan heti roll funktio pyörimään no advantagella
             proficiency = bundle?.get("data") as Int
+            proficiencyNumber.setText(proficiency.toString())
             if(bundle.get("roll") as Boolean){
                 rollTheDice(checkAdvantage().toString())
                 mp = MediaPlayer.create(this, R.raw.diceroll)
