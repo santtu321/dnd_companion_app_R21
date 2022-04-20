@@ -69,27 +69,27 @@ class MainActivity : AppCompatActivity() {
                     when(myRandomNumbers[0])
                     {
                         1->{
-                            diceTextView1.setTextColor(Color.RED)
+                            runOnUiThread({diceTextView1.setTextColor(Color.RED)})
                         }
                         20->{
-                            diceTextView1.setTextColor(Color.GREEN)
+                            runOnUiThread({diceTextView1.setTextColor(Color.GREEN)})
                         }
                     }
                     when(myRandomNumbers[1])                                                             // ja täss pistetään punaiseksi luvut jos tulee critical failure eli 1 ja vihreäksi
                     {                                                                                    //jos tulee 20
                         1->{
-                            diceTextView2.setTextColor(Color.RED)
+                            runOnUiThread({diceTextView2.setTextColor(Color.RED)})
                         }
                         20->{
-                            diceTextView2.setTextColor(Color.GREEN)
+                            runOnUiThread({diceTextView2.setTextColor(Color.GREEN)})
                         }
                     }
                     when(mySortedNumbers[0]){
                         1->{
-                            textViewResult.setTextColor(Color.RED)
+                            runOnUiThread({textViewResult.setTextColor(Color.RED)})
                         }
                         20->{
-                            textViewResult.setTextColor(Color.GREEN)
+                            runOnUiThread({textViewResult.setTextColor(Color.GREEN)})
                         }
                     }
                 }).start()                                                                                  // ja laitetaan threadi pyörimmää
@@ -115,27 +115,27 @@ class MainActivity : AppCompatActivity() {
                     when(myRandomNumbers[0])
                     {
                         1->{
-                            diceTextView1.setTextColor(Color.RED)
+                            runOnUiThread({diceTextView1.setTextColor(Color.RED)})
                         }
                         20->{
-                            diceTextView1.setTextColor(Color.GREEN)
+                            runOnUiThread({diceTextView1.setTextColor(Color.GREEN)})
                         }
                     }
                     when(myRandomNumbers[1])
                     {
                         1->{
-                            diceTextView2.setTextColor(Color.RED)
+                            runOnUiThread({diceTextView2.setTextColor(Color.RED)})
                         }
                         20->{
-                            diceTextView2.setTextColor(Color.GREEN)
+                            runOnUiThread({diceTextView2.setTextColor(Color.GREEN)})
                         }
                     }
                     when(myRandomNumbers[0]){
                         1->{
-                            textViewResult.setTextColor(Color.RED)
+                            runOnUiThread({textViewResult.setTextColor(Color.RED)})
                         }
                         20->{
-                            textViewResult.setTextColor(Color.GREEN)
+                            runOnUiThread({textViewResult.setTextColor(Color.GREEN)})
                         }
                     }
                 }).start()
@@ -160,26 +160,26 @@ class MainActivity : AppCompatActivity() {
 
                     when(myRandomNumbers[0]){
                         1->{
-                            diceTextView1.setTextColor(Color.RED)
+                            runOnUiThread({diceTextView1.setTextColor(Color.RED)})
                         }
                         20->{
-                            diceTextView1.setTextColor(Color.GREEN)
+                            runOnUiThread({diceTextView1.setTextColor(Color.GREEN)})
                         }
                     }
                     when(myRandomNumbers[1]){
                         1->{
-                            diceTextView2.setTextColor(Color.RED)
+                            runOnUiThread({diceTextView2.setTextColor(Color.RED)})
                         }
                         20->{
-                            diceTextView2.setTextColor(Color.GREEN)
+                            runOnUiThread({diceTextView2.setTextColor(Color.GREEN)})
                         }
                     }
                     when(mySortedNumbers[0]){
                         1->{
-                            textViewResult.setTextColor(Color.RED)
+                            runOnUiThread({textViewResult.setTextColor(Color.RED)})
                         }
                         20->{
-                            textViewResult.setTextColor(Color.GREEN)
+                            runOnUiThread({textViewResult.setTextColor(Color.GREEN)})
                         }
                     }
                 }).start()
