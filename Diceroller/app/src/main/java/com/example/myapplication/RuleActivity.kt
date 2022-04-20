@@ -111,7 +111,7 @@ class RuleActivity : AppCompatActivity() {
         inflater.inflate(R.menu.popup_menu,menu)
         return true
     }                                                                                   //tämä kaikkiin activityihin tekee kolmepisteen appbaariin ja sen jälkeen se näyttää popup menun
-    // kun siitä klikataan. alempana on myös on funktio kun popupmenun itemeistä klikataan
+                                                                                        // kun siitä klikataan. alempana on myös on funktio kun popupmenun itemeistä klikataan
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
