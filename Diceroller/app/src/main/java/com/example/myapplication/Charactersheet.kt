@@ -2,11 +2,13 @@ package com.example.myapplication
 
 import MinMaxFilter
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.graphics.drawable.GradientDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputFilter
+import android.text.TextUtils
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -150,34 +152,45 @@ class Charactersheet : AppCompatActivity() {
 
         }
         updatebutton.setOnClickListener{
-            val name = nametext.text.toString()
-            val race = racetext.text.toString()
-            val charlevel = leveltext.text.toString().toInt()                                       //buttoni tallettaa arvot, mitkä on pistetty paikoilleen ja tallentaa ne databaseen
-            val charclass = classtext.text.toString()
-            val str = strtext.text.toString().toInt()
-            val dex = dextext.text.toString().toInt()
-            val con = context.text.toString().toInt()
-            val int = inttext.text.toString().toInt()
-            val wis = wistext.text.toString().toInt()
-            val cha = chatext.text.toString().toInt()
-            val strpro = swstr.isChecked                                                            //eli proficiency tallennetaan ture/falsena ja statsit ja leveli talletetaan inttinä
-            val dexpro = swdex.isChecked                                                            // ja loput eli nimi, race sekä classi tallennetaan stringinä.
-            val conpro = swcon.isChecked
-            val intpro = swint.isChecked
-            val wispro = swwis.isChecked
-            val chapro = swcha.isChecked
+            val replyIntentupdate = Intent()
+            if (TextUtils.isEmpty(nametext.text)) {
+                setResult(Activity.RESULT_CANCELED, replyIntentupdate)
+            } else {
+                val name = nametext.text.toString()
+                val race = racetext.text.toString()
+                val charlevel = leveltext.text.toString().toInt()                                       //buttoni tallettaa arvot, mitkä on pistetty paikoilleen ja tallentaa ne databaseen
+                val charclass = classtext.text.toString()
+                val str = strtext.text.toString().toInt()
+                val dex = dextext.text.toString().toInt()
+                val con = context.text.toString().toInt()
+                val int = inttext.text.toString().toInt()
+                val wis = wistext.text.toString().toInt()
+                val cha = chatext.text.toString().toInt()
+                val strpro = swstr.isChecked                                                            //eli proficiency tallennetaan ture/falsena ja statsit ja leveli talletetaan inttinä
+                val dexpro = swdex.isChecked                                                            // ja loput eli nimi, race sekä classi tallennetaan stringinä.
+                val conpro = swcon.isChecked
+                val intpro = swint.isChecked
+                val wispro = swwis.isChecked
+                val chapro = swcha.isChecked
 
-            val proficiency = 2+(0.25*(charlevel-1)).nextDown().toInt()                             // tämä funktio laskee levelistä, mikä proficiency sinulla pitäisi olla.
+                val proficiency = 2+(0.25*(charlevel-1)).nextDown().toInt()                             // tämä funktio laskee levelistä, mikä proficiency sinulla pitäisi olla.
 
-            updateText(proficiency)
-                                                                                                                                // ja updatetaan modifier ja save textviewit
-            //TODO
-            //eli tähän  updatettaa arvot sinne databaseen
-            //TODO
+                updateText(proficiency)
+                // ja updatetaan modifier ja save textviewit
+                replyIntentupdate.putExtra(
+                    NewCharacterActivity.EXTRA_REPLY,
+                    arrayOf(name,charlevel,charclass,race,str,dex,con,int,wis,cha)
+                )
+
+
+
+                setResult(Activity.RESULT_OK, replyIntentupdate)
+            }
+            finish()
         }
 
         strmod.setOnClickListener{                                                                  //pistetään jokaiselle textviewille onclick listener jolla aukaistaan noppasovellus
-                                                                                                    //lähetetään samalla dataa sinne, jotta se saa modifierin, jolla rollata
+            //lähetetään samalla dataa sinne, jotta se saa modifierin, jolla rollata
             val data:Int = strmod.text.toString().toInt()                                           // ja tällä hetkellä roll on aina true eli se tulee rollaamaan aina kun
             val roll:Boolean = true                                                                 //activity aukaistaan
             val intent = Intent(this, MainActivity::class.java)
@@ -406,7 +419,7 @@ class Charactersheet : AppCompatActivity() {
         inflater.inflate(R.menu.popup_menu,menu)
         return true
     }                                                                                   //tämä kaikkiin activityihin tekee kolmepisteen appbaariin ja sen jälkeen se näyttää popup menun
-                                                                                        // kun siitä klikataan. alempana on myös on funktio kun popupmenun itemeistä klikataan
+    // kun siitä klikataan. alempana on myös on funktio kun popupmenun itemeistä klikataan
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
@@ -447,5 +460,10 @@ class Charactersheet : AppCompatActivity() {
             }
             else->super.onOptionsItemSelected(item)
         }
+
+    }
+    companion object {
+        const val EXTRA_REPLY = "com.example.android.characterlistsql.REPLY"
+
     }
 }

@@ -13,7 +13,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b5ba122-65a9-4fa3-803c-b439a0a56234" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Diceroller/app/src/main/java/com/example/myapplication/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Diceroller/app/src/main/java/com/example/myapplication/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diceroller/app/src/main/res/layout/activity_sum.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Diceroller/app/src/main/res/layout/activity_sum.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
