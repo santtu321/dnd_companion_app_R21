@@ -32,6 +32,9 @@
             android:name=".sumActivity"
             android:exported="false" />
         <activity
+            android:name=".DeleteCharacterActivity"
+            android:exported="false"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
