@@ -108,6 +108,7 @@
         app:layout_constraintVertical_bias="0.953" />
 
     <RadioGroup
+        android:id="@+id/rGroup1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="7dp"
@@ -122,19 +123,20 @@
             android:id="@+id/rButtonWeak"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Weak" />
+            android:text="@string/weak" />
 
         <RadioButton
             android:id="@+id/rButtonRes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Resistant" />
+            android:text="@string/resistant" />
 
         <RadioButton
             android:id="@+id/rButtonNeutral"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Neutral" />
+            android:checked="true"
+            android:text="@string/neutral" />
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

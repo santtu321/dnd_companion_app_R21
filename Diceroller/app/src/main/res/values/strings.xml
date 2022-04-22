@@ -20,4 +20,7 @@
     <string name="button_delete">Delete</string>
 
     <string name="delete">Delete</string>
+    <string name="neutral">Neutral</string>
+    <string name="resistant">Resistant</string>
+    <string name="weak">Weak</string>
 </resources>
