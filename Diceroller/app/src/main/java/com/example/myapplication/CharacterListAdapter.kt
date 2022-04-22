@@ -24,7 +24,7 @@ class CharacterListAdapter(private val listener: MainDatabaseActivity) : ListAda
 
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.character + ", Class:" + current.job + ", Level:" + current.level + "Id: "+ current.id)
+        holder.bind(current.id.toString()+ ". " + current.character + " " + current.job + " lvl:" + current.level )
     }
 
 
