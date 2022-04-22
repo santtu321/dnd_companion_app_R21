@@ -10,7 +10,7 @@
         android:id="@+id/tv_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
         android:text="Name: asdakjnad"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"

@@ -16,7 +16,13 @@ data class Characterdata(
     @ColumnInfo(name= "con", defaultValue ="1") val con: Int,
     @ColumnInfo(name= "int", defaultValue ="1") val ao: Int,
     @ColumnInfo(name= "wis", defaultValue ="1") val wis: Int,
-    @ColumnInfo(name= "cha", defaultValue ="1") val cha: Int
+    @ColumnInfo(name= "cha", defaultValue ="1") val cha: Int,
+    @ColumnInfo(name= "strpro", defaultValue ="0") val strpro: Boolean,
+    @ColumnInfo(name= "dexpro", defaultValue ="0") val dexpro: Boolean,
+    @ColumnInfo(name= "conpro", defaultValue ="0") val conpro: Boolean,
+    @ColumnInfo(name= "intpro", defaultValue ="0") val intpro: Boolean,
+    @ColumnInfo(name= "wispro", defaultValue ="0") val wispro: Boolean,
+    @ColumnInfo(name= "chapro", defaultValue ="0") val chapro: Boolean
 
 
 )

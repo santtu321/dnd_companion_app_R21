@@ -27,11 +27,7 @@ class CharacterRepository(private val characterDao: CharacterDao) {
     fun updateByUserId(characterdata : Characterdata) {
         characterDao.updateByUserId(characterdata)
     }
-    @WorkerThread
-    fun loadCharacter(CharacterNum: Int): List<Characterdata> {
-        return characterDao.loadCharacter(CharacterNum)
 
-    }
 
 
 }

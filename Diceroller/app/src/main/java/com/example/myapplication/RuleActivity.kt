@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.text.method.TextKeyListener.clear
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -58,12 +57,11 @@ class RuleActivity : AppCompatActivity() {
 
 
         //listeners
-        btn_getData.setOnClickListener{
-
+        btn_getData.setOnClickListener {
             getDataSpells()
+
         }
     }
-
 
     private fun initRV() {
         adapter = SpellAdapter(aList)
@@ -74,8 +72,10 @@ class RuleActivity : AppCompatActivity() {
     @SuppressLint("NotifyDataSetChanged")
     fun getDataSpells(){
         var et_dataInput = findViewById<EditText>(R.id.et_dataInput)
-        aList.clear()
-        val urlSpells = "https://www.dnd5eapi.co/api/spells/" + et_dataInput.text.toString()
+
+
+
+        val urlSpells = "https://www.dnd5eapi.co/api/spells/fireball"
         val queue = Volley.newRequestQueue(this)
         val request = StringRequest(Request.Method.GET,urlSpells, { response ->
               val data = response.toString()
@@ -138,13 +138,8 @@ class RuleActivity : AppCompatActivity() {
                 startActivity(intent)
                 true
             }
-            R.id.action_rule_spells->{
+            R.id.action_rule->{
                 val intent = Intent(this, RuleActivity::class.java)
-                startActivity(intent)
-                true
-            }
-            R.id.action_rule_monster->{
-                val intent = Intent(this, RuleActivityMonsters::class.java)
                 startActivity(intent)
                 true
             }

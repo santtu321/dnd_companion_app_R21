@@ -1,145 +1,145 @@
 
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <LinearLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+    <EditText
+        android:id="@+id/edit_word"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:minHeight="@dimen/min_height"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_word"
+        android:inputType="textAutoComplete"
+        android:layout_margin="@dimen/big_padding"
+        android:textSize="18sp"
+        android:autofillHints="" />
+    <EditText
 
-
-        <EditText
-            android:id="@+id/edit_word"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="@dimen/min_height"
-            android:fontFamily="sans-serif-light"
-            android:hint="@string/hint_word"
-            android:inputType="textAutoComplete"
-            android:layout_margin="@dimen/big_padding"
-            android:textSize="18sp"
-            android:autofillHints="" />
-        <EditText
-
-            android:id="@+id/edit_level"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="@dimen/min_height"
-            android:fontFamily="sans-serif-light"
-            android:hint="@string/hint_lvl"
-            android:inputType="number"
-            android:layout_margin="@dimen/big_padding"
-            android:textSize="18sp"
-            android:autofillHints="" />
-        <EditText
-            android:id="@+id/edit_job"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="@dimen/min_height"
-            android:fontFamily="sans-serif-light"
-            android:hint="@string/hint_class"
-            android:inputType="textAutoComplete"
-            android:layout_margin="@dimen/big_padding"
-            android:textSize="18sp"
-            android:autofillHints="" />
+        android:id="@+id/edit_level"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/min_height"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_lvl"
+        android:inputType="number"
+        android:layout_margin="@dimen/big_padding"
+        android:textSize="18sp"
+        android:autofillHints="" />
+    <EditText
+        android:id="@+id/edit_job"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/min_height"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_class"
+        android:inputType="textAutoComplete"
+        android:layout_margin="@dimen/big_padding"
+        android:textSize="18sp"
+        android:autofillHints="" />
 
 
 
-        <EditText
-            android:id="@+id/edit_race"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="@dimen/min_height"
-            android:fontFamily="sans-serif-light"
-            android:hint="@string/hint_race"
-            android:inputType="textAutoComplete"
-            android:layout_margin="@dimen/big_padding"
-            android:textSize="18sp"
-            android:autofillHints="" />
+    <EditText
+        android:id="@+id/edit_race"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/min_height"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_race"
+        android:inputType="textAutoComplete"
+        android:layout_margin="@dimen/big_padding"
+        android:textSize="18sp"
+        android:autofillHints="" />
 
-        <EditText
-            android:id="@+id/edit_str"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="@dimen/min_height"
-            android:fontFamily="sans-serif-light"
-            android:hint="@string/hint_str"
-            android:inputType="number"
-            android:layout_margin="@dimen/big_padding"
-            android:textSize="18sp"
-            android:autofillHints="" />
+    <EditText
+        android:id="@+id/edit_str"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/min_height"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_str"
+        android:inputType="number"
+        android:layout_margin="@dimen/big_padding"
+        android:textSize="18sp"
+        android:autofillHints="" />
 
-        <EditText
-            android:id="@+id/edit_dex"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="@dimen/min_height"
-            android:fontFamily="sans-serif-light"
-            android:hint="@string/hint_dex"
-            android:inputType="number"
-            android:layout_margin="@dimen/big_padding"
-            android:textSize="18sp"
-            android:autofillHints="" />
+    <EditText
+        android:id="@+id/edit_dex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/min_height"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_dex"
+        android:inputType="number"
+        android:layout_margin="@dimen/big_padding"
+        android:textSize="18sp"
+        android:autofillHints="" />
 
-        <EditText
-            android:id="@+id/edit_con"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="@dimen/min_height"
-            android:fontFamily="sans-serif-light"
-            android:hint="@string/hint_con"
-            android:inputType="number"
-            android:layout_margin="@dimen/big_padding"
-            android:textSize="18sp"
-            android:autofillHints="" />
+    <EditText
+        android:id="@+id/edit_con"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/min_height"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_con"
+        android:inputType="number"
+        android:layout_margin="@dimen/big_padding"
+        android:textSize="18sp"
+        android:autofillHints="" />
 
 
-        <EditText
-            android:id="@+id/edit_int"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="@dimen/min_height"
-            android:fontFamily="sans-serif-light"
-            android:hint="@string/hint_int"
-            android:inputType="number"
-            android:layout_margin="@dimen/big_padding"
-            android:textSize="18sp"
-            android:autofillHints="" />
+    <EditText
+        android:id="@+id/edit_int"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/min_height"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_int"
+        android:inputType="number"
+        android:layout_margin="@dimen/big_padding"
+        android:textSize="18sp"
+        android:autofillHints="" />
 
-        <EditText
-            android:id="@+id/edit_wis"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="@dimen/min_height"
-            android:fontFamily="sans-serif-light"
-            android:hint="@string/hint_wis"
-            android:inputType="number"
-            android:layout_margin="@dimen/big_padding"
-            android:textSize="18sp"
-            android:autofillHints="" />
+    <EditText
+        android:id="@+id/edit_wis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/min_height"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_wis"
+        android:inputType="number"
+        android:layout_margin="@dimen/big_padding"
+        android:textSize="18sp"
+        android:autofillHints="" />
 
-        <EditText
-            android:id="@+id/edit_cha"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="@dimen/min_height"
-            android:fontFamily="sans-serif-light"
-            android:hint="@string/hint_cha"
-            android:inputType="number"
-            android:layout_margin="@dimen/big_padding"
-            android:textSize="18sp"
-            android:autofillHints="" />
+    <EditText
+        android:id="@+id/edit_cha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/min_height"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_cha"
+        android:inputType="number"
+        android:layout_margin="@dimen/big_padding"
+        android:textSize="18sp"
+        android:autofillHints="" />
 
-        <Button
-            android:id="@+id/button_save"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:text="@string/button_save"
-            android:layout_margin="@dimen/big_padding"
-            android:textColor="@color/buttonLabel" />
+            <Button
+                android:id="@+id/button_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:text="@string/button_save"
+                android:layout_margin="@dimen/big_padding"
+                android:textColor="@color/buttonLabel" />
 
-    </LinearLayout>
-</ScrollView>
+        </LinearLayout>
+    </ScrollView>

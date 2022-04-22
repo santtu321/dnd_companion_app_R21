@@ -18,5 +18,5 @@ data class SpellReportModel(
     @SerializedName("9") var damageAtSlotLevelNine: String? = null,
     @SerializedName("casting_time") var castingTime: String? = null,
     @SerializedName("school") var school: String? = null,
+    //@SerializedName("results") var spellReportList: ArrayList<SpellReport> = arrayListOf()
 )
-
