@@ -9,10 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputFilter
 import android.view.*
-import android.widget.Button
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlin.math.ceil
@@ -29,8 +26,11 @@ class sumActivity : AppCompatActivity() {
         val sum: TextView = findViewById(R.id.tViewSum)
         var mp: MediaPlayer? = null
 
+
         diceAmount.filters = arrayOf<InputFilter>(MinMaxFilter(1,100))                                    //tämä filteroi käyttäjäninputin, ettei hän pysty pistämään muita lukuja kuin 1-100
         diceSides.filters = arrayOf<InputFilter>(MinMaxFilter(1,100))                                     //tuo MinMaxFilter koodi löytyy InputFilter.kt tiedostosta
+
+
 
         fun intenseRoll(index: Int, tView : TextView, myRandomNumbers: List<Int>) = runBlocking {         // pistetään tässä nuo threadit omaan funktioon, jossa käytetään co
             launch {                                                                                      //routineja, koska muuten yksittäinen threadi ei pysty tekemään kaikkia
@@ -40,6 +40,9 @@ class sumActivity : AppCompatActivity() {
                     var total = 0
                     var dices = diceAmount.text.toString().toInt()
                     val maxroll = diceSides.text.toString().toInt()
+                    val radioGroup: RadioGroup = findViewById(R.id.rGroup1)
+                    val resistance = radioGroup.checkedRadioButtonId
+                    val radioButton: RadioButton = findViewById(resistance)
 
                     while(i < 20){
                         if(i != 19){
@@ -71,7 +74,20 @@ class sumActivity : AppCompatActivity() {
                         total += myRandomNumbers[z]
                         z++
                     }
-                    sum.text = total.toString()
+                    when(radioButton.text){
+                        "weak"->
+                        {
+                            sum.text = (total*2).toString()
+                        }
+                        "resistant"->
+                        {
+                            sum.text = (total/2).toString()
+                        }
+                        "neutral"->
+                        {
+                            sum.text = total.toString()
+                        }
+                    }
 
                 }).start()
             }
