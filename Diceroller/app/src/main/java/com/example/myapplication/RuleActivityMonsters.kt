@@ -130,7 +130,7 @@ class RuleActivityMonsters : AppCompatActivity() {
                 true
             }
             R.id.action_home->{
-                val intent = Intent(this, RuleActivity::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 true
 
@@ -160,11 +160,7 @@ class RuleActivityMonsters : AppCompatActivity() {
                 startActivity(intent)
                 true
             }
-            R.id.test->{
-                val intent = Intent(this, Charactersheet::class.java)
-                startActivity(intent)
-                true
-            }
+
             else->super.onOptionsItemSelected(item)
         }
     }

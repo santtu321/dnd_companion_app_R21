@@ -169,28 +169,44 @@ class MainDatabaseActivity : AppCompatActivity(), CharacterListAdapter.OnCharact
 // kun siitä klikataan. alempana on myös on funktio kun popupmenun itemeistä klikataan
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_sum -> {
+        return when(item.itemId){
+            R.id.action_back->{
+                onBackPressed()
+                true
+            }
+            R.id.action_home->{
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                true
+
+            }
+            R.id.action_sum->{
                 val intent = Intent(this, sumActivity::class.java)
                 startActivity(intent)
                 true
             }
-            R.id.action_rule -> {
+            R.id.action_rule_spells->{
                 val intent = Intent(this, RuleActivity::class.java)
                 startActivity(intent)
                 true
             }
-            R.id.action_main -> {
+            R.id.action_rule_monster->{
+                val intent = Intent(this, RuleActivityMonsters::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_main->{
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 true
             }
-            R.id.action_database -> {
+            R.id.action_database->{
                 val intent = Intent(this, MainDatabaseActivity::class.java)
                 startActivity(intent)
                 true
             }
-            else -> super.onOptionsItemSelected(item)
+
+            else->super.onOptionsItemSelected(item)
         }
     }
 

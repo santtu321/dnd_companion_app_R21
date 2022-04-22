@@ -215,7 +215,7 @@ class sumActivity : AppCompatActivity() {
                 true
             }
             R.id.action_home->{
-                val intent = Intent(this, RuleActivity::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 true
 
@@ -225,8 +225,13 @@ class sumActivity : AppCompatActivity() {
                 startActivity(intent)
                 true
             }
-            R.id.action_rule->{
+            R.id.action_rule_spells->{
                 val intent = Intent(this, RuleActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_rule_monster->{
+                val intent = Intent(this, RuleActivityMonsters::class.java)
                 startActivity(intent)
                 true
             }
@@ -240,11 +245,7 @@ class sumActivity : AppCompatActivity() {
                 startActivity(intent)
                 true
             }
-            R.id.test->{
-                val intent = Intent(this, Charactersheet::class.java)
-                startActivity(intent)
-                true
-            }
+
             else->super.onOptionsItemSelected(item)
         }
     }

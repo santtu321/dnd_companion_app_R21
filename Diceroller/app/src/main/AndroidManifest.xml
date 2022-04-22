@@ -29,6 +29,9 @@
             android:name=".RuleActivity"
             android:exported="false" />
         <activity
+            android:name=".RuleActivityMonsters"
+            android:exported="false"/>
+        <activity
             android:name=".sumActivity"
             android:exported="false" />
         <activity
