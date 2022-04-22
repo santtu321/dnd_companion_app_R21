@@ -39,13 +39,13 @@
                     <item
                         android:id="@+id/action_rule_spells"
                         android:title="spells"
-                        android:icon="@drawable/ic_baseline_add_24"
+                        android:icon="@drawable/ic_magic"
                         app:showAsAction="ifRoom"/>
 
                     <item
                         android:id="@+id/action_rule_monster"
                         android:title="monsters"
-                        android:icon="@drawable/ic_baseline_add_24"
+                        android:icon="@drawable/ic_monster"
                         app:showAsAction="ifRoom"/>
 
             </menu>
