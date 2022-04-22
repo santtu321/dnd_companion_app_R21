@@ -9,7 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputFilter
 import android.view.*
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.TextView
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlin.math.ceil
@@ -21,7 +24,6 @@ class sumActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sum)
 
         val diceAmount: EditText = findViewById(R.id.eText3)
-        val radioGroup: RadioGroup = findViewById(R.id.rGroup1)
         val diceSides: EditText = findViewById(R.id.eText2)
         val rollButton2: Button = findViewById(R.id.bRoll2)
         val sum: TextView = findViewById(R.id.tViewSum)
@@ -29,8 +31,6 @@ class sumActivity : AppCompatActivity() {
 
         diceAmount.filters = arrayOf<InputFilter>(MinMaxFilter(1,100))                                    //tämä filteroi käyttäjäninputin, ettei hän pysty pistämään muita lukuja kuin 1-100
         diceSides.filters = arrayOf<InputFilter>(MinMaxFilter(1,100))                                     //tuo MinMaxFilter koodi löytyy InputFilter.kt tiedostosta
-
-
 
         fun intenseRoll(index: Int, tView : TextView, myRandomNumbers: List<Int>) = runBlocking {         // pistetään tässä nuo threadit omaan funktioon, jossa käytetään co
             launch {                                                                                      //routineja, koska muuten yksittäinen threadi ei pysty tekemään kaikkia
@@ -40,10 +40,6 @@ class sumActivity : AppCompatActivity() {
                     var total = 0
                     var dices = diceAmount.text.toString().toInt()
                     val maxroll = diceSides.text.toString().toInt()
-                    val resistance = radioGroup.checkedRadioButtonId
-                    val radioButton: RadioButton = findViewById(resistance)
-
-
 
                     while(i < 20){
                         if(i != 19){
@@ -75,21 +71,7 @@ class sumActivity : AppCompatActivity() {
                         total += myRandomNumbers[z]
                         z++
                     }
-                    when(radioButton.text){
-                        "Weak"->
-                        {
-                           sum.text = (total*2).toString()
-                        }
-                        "Resistant"->
-                        {
-                            sum.text = (total/2).toString()
-                        }
-                        "Neutral"->
-                        {
-                            sum.text = total.toString()
-                        }
-                    }
-
+                    sum.text = total.toString()
 
                 }).start()
             }

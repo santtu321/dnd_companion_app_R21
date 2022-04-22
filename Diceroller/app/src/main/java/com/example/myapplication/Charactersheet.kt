@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
 import kotlin.math.nextDown
@@ -21,6 +22,11 @@ import kotlin.math.roundToInt
 class Charactersheet : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val dator = intent.extras!!.getStringArray("EXTRA")
+        val characterViewModel: CharacterViewModel by viewModels {
+            CharacterViewModelFactory((application as CharactersApplication).repository)
+
+        }
         setContentView(R.layout.activity_charactersheet)
 
         val classbutton : Button = findViewById(R.id.bClass)
@@ -55,6 +61,27 @@ class Charactersheet : AppCompatActivity() {
         val wissave : TextView = findViewById(R.id.tViewSaveWis)
         val chasave : TextView = findViewById(R.id.tViewSaveCha)
 
+
+
+
+        //teksteihin laitetaan valuet jotka saadaan intentin kautta
+        nametext.setText(dator?.elementAt(1))
+        leveltext.setText(dator?.elementAt(2))
+        classtext.text = dator?.elementAt(3)
+        racetext.text = dator?.elementAt(4)
+        strtext.setText(dator?.elementAt(5))
+        dextext.setText(dator?.elementAt(6))
+        context.setText(dator?.elementAt(7))
+        inttext.setText(dator?.elementAt(8))
+        wistext.setText(dator?.elementAt(9))
+        chatext.setText(dator?.elementAt(10))
+        swstr.isChecked = dator?.elementAt(11).toBoolean()
+        swdex.isChecked = dator?.elementAt(12).toBoolean()
+        swcon.isChecked = dator?.elementAt(13).toBoolean()
+        swint.isChecked = dator?.elementAt(14).toBoolean()
+        swwis.isChecked = dator?.elementAt(15).toBoolean()
+        swcha.isChecked = dator?.elementAt(16).toBoolean()
+        
 
         strtext.filters = arrayOf<InputFilter>(MinMaxFilter(1,30))
         dextext.filters = arrayOf<InputFilter>(MinMaxFilter(1,30))
@@ -152,45 +179,43 @@ class Charactersheet : AppCompatActivity() {
 
         }
         updatebutton.setOnClickListener{
-            val replyIntentupdate = Intent()
+            Log.d("tagUpdClcLis","updateclicklistener")
+            val replyIntentUpdate = Intent()
             if (TextUtils.isEmpty(nametext.text)) {
-                setResult(Activity.RESULT_CANCELED, replyIntentupdate)
+                setResult(Activity.RESULT_CANCELED, replyIntentUpdate)
             } else {
-                val name = nametext.text.toString()
-                val race = racetext.text.toString()
-                val charlevel = leveltext.text.toString().toInt()                                       //buttoni tallettaa arvot, mitkä on pistetty paikoilleen ja tallentaa ne databaseen
-                val charclass = classtext.text.toString()
-                val str = strtext.text.toString().toInt()
-                val dex = dextext.text.toString().toInt()
-                val con = context.text.toString().toInt()
-                val int = inttext.text.toString().toInt()
-                val wis = wistext.text.toString().toInt()
-                val cha = chatext.text.toString().toInt()
-                val strpro = swstr.isChecked                                                            //eli proficiency tallennetaan ture/falsena ja statsit ja leveli talletetaan inttinä
-                val dexpro = swdex.isChecked                                                            // ja loput eli nimi, race sekä classi tallennetaan stringinä.
-                val conpro = swcon.isChecked
-                val intpro = swint.isChecked
-                val wispro = swwis.isChecked
-                val chapro = swcha.isChecked
 
-                val proficiency = 2+(0.25*(charlevel-1)).nextDown().toInt()                             // tämä funktio laskee levelistä, mikä proficiency sinulla pitäisi olla.
+            val id=dator?.elementAt(0)
+            val name = nametext.text.toString()
+            val race = racetext.text.toString()
+            val charlevel = leveltext.text.toString()                                     //buttoni tallettaa arvot, mitkä on pistetty paikoilleen ja tallentaa ne databaseen
+            val charclass = classtext.text.toString()
+            val str = strtext.text.toString()
+            val dex = dextext.text.toString()
+            val con = context.text.toString()
+            val int = inttext.text.toString()
+            val wis = wistext.text.toString()
+            val cha = chatext.text.toString()
+            val strpro = swstr.isChecked.toString()                                                            //eli proficiency tallennetaan ture/falsena ja statsit ja leveli talletetaan inttinä
+            val dexpro = swdex.isChecked.toString()                                                            // ja loput eli nimi, race sekä classi tallennetaan stringinä.
+            val conpro = swcon.isChecked.toString()
+            val intpro = swint.isChecked.toString()
+            val wispro = swwis.isChecked.toString()
+            val chapro = swcha.isChecked.toString()
+                Log.d("gorillainmycode","$chapro")
 
-                updateText(proficiency)
                 // ja updatetaan modifier ja save textviewit
-                replyIntentupdate.putExtra(
-                    NewCharacterActivity.EXTRA_REPLY,
-                    arrayOf(name,charlevel,charclass,race,str,dex,con,int,wis,cha)
-                )
+                replyIntentUpdate.putExtra(EXTRA_REPLY, arrayOf(id,name,charlevel,charclass,race,str,dex,con,int,wis,cha,strpro,dexpro,conpro,intpro,wispro,chapro))
 
-
-
-                setResult(Activity.RESULT_OK, replyIntentupdate)
+                setResult(Activity.RESULT_OK, replyIntentUpdate)
             }
             finish()
         }
-
+        val charLevelForProficensy = leveltext.text.toString()
+        val proficiency = 2+(0.25*(charLevelForProficensy.toInt()-1)).nextDown().toInt()                             // tämä funktio laskee levelistä, mikä proficiency sinulla pitäisi olla.
+        updateText(proficiency)
         strmod.setOnClickListener{                                                                  //pistetään jokaiselle textviewille onclick listener jolla aukaistaan noppasovellus
-            //lähetetään samalla dataa sinne, jotta se saa modifierin, jolla rollata
+                                                                                                    //lähetetään samalla dataa sinne, jotta se saa modifierin, jolla rollata
             val data:Int = strmod.text.toString().toInt()                                           // ja tällä hetkellä roll on aina true eli se tulee rollaamaan aina kun
             val roll:Boolean = true                                                                 //activity aukaistaan
             val intent = Intent(this, MainActivity::class.java)
@@ -419,7 +444,7 @@ class Charactersheet : AppCompatActivity() {
         inflater.inflate(R.menu.popup_menu,menu)
         return true
     }                                                                                   //tämä kaikkiin activityihin tekee kolmepisteen appbaariin ja sen jälkeen se näyttää popup menun
-    // kun siitä klikataan. alempana on myös on funktio kun popupmenun itemeistä klikataan
+                                                                                        // kun siitä klikataan. alempana on myös on funktio kun popupmenun itemeistä klikataan
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){

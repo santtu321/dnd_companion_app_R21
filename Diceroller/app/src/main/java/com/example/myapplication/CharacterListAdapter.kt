@@ -1,3 +1,4 @@
+
 package com.example.myapplication
 
 import android.view.LayoutInflater
@@ -9,57 +10,46 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
 
-class CharacterListAdapter : ListAdapter<Characterdata, CharacterListAdapter.CharacterViewHolder>(CharactersComparator()) {
+class CharacterListAdapter(private val listener: MainDatabaseActivity) : ListAdapter<Characterdata,
+        CharacterListAdapter.CharacterViewHolder>(CharactersComparator()) {
 
 
-    private lateinit var cListener: OnCharacterClickListener
-    interface OnCharacterClickListener{
-        fun onCharacterClick(positionC: Int)
-    }
-    fun getItemForSheet(position: Int): Characterdata? {
-        return getItem(position)
-
-    }
-    fun setOnCharacterClickListener(listener: OnCharacterClickListener){
-        cListener= listener
-
-
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
         val view: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.recyclerview_item, parent, false)
 
-        return CharacterViewHolder(view,cListener)
+        return CharacterViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
         val current = getItem(position)
-
-
         holder.bind(current.character + ", Class:" + current.job + ", Level:" + current.level + "Id: "+ current.id)
-
-
-
     }
 
 
-
-    class CharacterViewHolder(itemView: View,listener: OnCharacterClickListener) : RecyclerView.ViewHolder(itemView) {
+    inner class CharacterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         private val characterItemView: TextView = itemView.findViewById(R.id.textView)
 
         // private val DeleteButton: ImageButton = itemView.findViewById(R.id.DeleteButton)
         init {
-            itemView.setOnClickListener {
-                listener.onCharacterClick(adapterPosition)
-            }
+            itemView.setOnClickListener(this)
         }
-
-
-
         fun bind(text: String?) {
             characterItemView.text = text
         }
+
+        override fun onClick(v: View?) {
+            val position= adapterPosition
+            val yeehaa= getItem(adapterPosition)
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onCharacterClick(yeehaa)
+            }
+        }
+    }
+    interface OnCharacterClickListener{
+        fun onCharacterClick(position: Characterdata)
+
     }
 
     class CharactersComparator : DiffUtil.ItemCallback<Characterdata>() {

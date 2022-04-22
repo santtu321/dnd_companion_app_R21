@@ -58,8 +58,6 @@ class NewCharacterActivity : AppCompatActivity() {
                 Log.d("mytag","job")
                 replyIntent.putExtra(EXTRA_REPLY, arrayOf(character,level,job,race,str,dex,con,ao,wis,cha))
 
-
-
                 setResult(Activity.RESULT_OK, replyIntent)
 
             }

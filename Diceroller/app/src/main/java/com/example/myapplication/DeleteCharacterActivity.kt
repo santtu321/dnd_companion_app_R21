@@ -35,8 +35,6 @@ class DeleteCharacterActivity : AppCompatActivity() {
                 //replyIntent.putExtra(EXTRA_REPLY, character)
                 replyIntentdelete.putExtra(EXTRA_REPLY, arrayOf(id))
 
-
-                Log.d("TAG", "message")
                 setResult(Activity.RESULT_OK, replyIntentdelete)
 
             }

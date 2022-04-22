@@ -15,16 +15,13 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import androidx.recyclerview.widget.ListAdapter
-import androidx.room.Room
 
 
-class MainDatabaseActivity : AppCompatActivity() {
+class MainDatabaseActivity : AppCompatActivity(), CharacterListAdapter.OnCharacterClickListener {
 
     private val newCharacterActivityRequestCode = 1
     private val deleteCharacterActivityRequestCode = 2
     private val updateCharacterActivityRequestCode = 3
-
     private val characterViewModel: CharacterViewModel by viewModels {
         CharacterViewModelFactory((application as CharactersApplication).repository)
 
@@ -34,32 +31,11 @@ class MainDatabaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_database)
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
-        val adapter = CharacterListAdapter()
+        val adapter = CharacterListAdapter(this)
+
 
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter.setOnCharacterClickListener(object : CharacterListAdapter.OnCharacterClickListener {
-            override fun onCharacterClick(positionC: Int) {
-
-                //characterViewModel.loadCharacter(positionC)
-                /* CoroutineScope(Dispatchers.IO).launch {
-                     val raw = characterViewModel.loadCharacter(positionC).get(0)
-                     Log.d("mytagrip","$raw")
-                 }*/
-
-                val intent = Intent(this@MainDatabaseActivity, Charactersheet::class.java)
-                intent.putExtra("EXTRA", positionC)
-                startActivity(intent)
-
-                /* val intent = Intent(this@MainDatabaseActivity, Charactersheet::class.java)
-                 startActivityForResult(intent, updateCharacterActivityRequestCode)*/
-                Log.d("mytag1", "$positionC")
-
-
-            }
-
-        })
-
 
         // Add an observer on the LiveData returned by getAlphabetizedWords.
         // The onChanged() method fires when the observed data changes and the activity is
@@ -85,14 +61,33 @@ class MainDatabaseActivity : AppCompatActivity() {
 
 
         }
-        /*  val updateButtonClick = findViewById<ImageButton>(R.id.updateButton)
-          updateButtonClick.setOnClickListener {
-              val intent = Intent(this@MainDatabaseActivity, updateCharacterActivity::class.java)
-              startActivityForResult(intent, deleteCharacterActivityRequestCode)
+
+    }
+    override fun onCharacterClick(position: Characterdata) {
+        Log.d("gorillagrip","$position")
+
+        val id= position.id.toString()
+        val name= position.character.toString()
+        val level= position.level.toString()
+        val characterclass=position.job.toString()
+        val race=position.race.toString()
+        val str=position.str.toString()
+        val dex=position.dex.toString()
+        val con=position.con.toString()
+        val ao= position.ao.toString()
+        val wis=position.wis.toString()
+        val cha=position.wis.toString()
+        val strpro=position.strpro.toString()
+        val dexpro=position.dexpro.toString()
+        val conpro=position.conpro.toString()
+        val intpro=position.intpro.toString()
+        val wispro=position.wispro.toString()
+        val chapro=position.chapro.toString()
 
 
-
-          }*/
+        intent = Intent(this@MainDatabaseActivity, Charactersheet::class.java)
+        intent.putExtra("EXTRA", arrayOf( id,name,level,characterclass,race,str,dex,con,ao,wis,cha,strpro,dexpro,conpro,intpro,wispro,chapro))
+        startActivityForResult(intent, updateCharacterActivityRequestCode)
     }
 
 
@@ -101,7 +96,7 @@ class MainDatabaseActivity : AppCompatActivity() {
 
         if (requestCode == newCharacterActivityRequestCode && resultCode == Activity.RESULT_OK) {
             intentData?.getStringArrayExtra(NewCharacterActivity.EXTRA_REPLY)?.let { reply ->
-
+                Log.d("newctag","successnewc")
                 val characterdata = Characterdata(
                     0,
                     reply.elementAt(0),
@@ -113,20 +108,19 @@ class MainDatabaseActivity : AppCompatActivity() {
                     reply.elementAt(6).toInt(),
                     reply.elementAt(7).toInt(),
                     reply.elementAt(8).toInt(),
-                    reply.elementAt(9).toInt()
+                    reply.elementAt(9).toInt(),
+                    strpro = false,
+                    dexpro = false,
+                    conpro = false,
+                    intpro = false,
+                    wispro = false,
+                    chapro = false
                 )
                 characterViewModel.insert(characterdata)
 
             }
 
-        } else {
-            Toast.makeText(
-                applicationContext,
-                R.string.empty_not_saved,
-                Toast.LENGTH_LONG
-            ).show()
         }
-
         if (requestCode == deleteCharacterActivityRequestCode && resultCode == Activity.RESULT_OK) {
             intentData?.getStringArrayExtra(DeleteCharacterActivity.EXTRA_REPLY)?.let { reply ->
                 val id = reply.elementAt(0).toInt()
@@ -135,10 +129,9 @@ class MainDatabaseActivity : AppCompatActivity() {
             }
 
         }
-
         if (requestCode == updateCharacterActivityRequestCode && resultCode == Activity.RESULT_OK) {
             intentData?.getStringArrayExtra(Charactersheet.EXTRA_REPLY)?.let { reply ->
-
+                Log.d("gorillagrip","aaaaah")
                 val characterdata = Characterdata(
                     reply.elementAt(0).toInt(),
                     reply.elementAt(1),
@@ -150,7 +143,14 @@ class MainDatabaseActivity : AppCompatActivity() {
                     reply.elementAt(7).toInt(),
                     reply.elementAt(8).toInt(),
                     reply.elementAt(9).toInt(),
-                    reply.elementAt(10).toInt()
+                    reply.elementAt(10).toInt(),
+                    reply.elementAt(11).toBoolean(),
+                    reply.elementAt(12).toBoolean(),
+                    reply.elementAt(13).toBoolean(),
+                    reply.elementAt(14).toBoolean(),
+                    reply.elementAt(15).toBoolean(),
+                    reply.elementAt(16).toBoolean()
+
                 )
                 characterViewModel.updateByUserId(characterdata)
 
@@ -158,6 +158,7 @@ class MainDatabaseActivity : AppCompatActivity() {
 
         }
     }
+
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -198,3 +199,4 @@ class MainDatabaseActivity : AppCompatActivity() {
 
     }
 }
+

@@ -22,6 +22,4 @@ interface CharacterDao {
     @Update
     fun updateByUserId(characterdata : Characterdata)
 
-    @Query("SELECT * FROM character_table LIMIT 1 OFFSET :CharacterNum")
-    fun loadCharacter(CharacterNum: Int): List<Characterdata>
 }//LIMIT 1 OFFSET
