@@ -9,8 +9,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 
+
 // Annotates class to be a Room Database with a table (entity) of the Character class
-@Database(entities = [Character::class], version = 1, exportSchema = false)
+@Database(entities = [Characterdata::class], version = 1, exportSchema = false)
 public abstract class CharacterRoomDatabase : RoomDatabase() {
 
     abstract fun characterDao(): CharacterDao
@@ -54,14 +55,15 @@ public abstract class CharacterRoomDatabase : RoomDatabase() {
             }
 
             suspend fun populateDatabase(characterDao: CharacterDao) {
-                // Delete all content here.
+
                 characterDao.deleteAll()
 
                 // Add sample words.
-                var character = Character("Jyrki")
-                characterDao.insert(character)
-                character = Character("Pekka")
-                characterDao.insert(character)
+                // var character = arrayOf(Characterdata( "Jyrki",  "1", "Wizard"))
+                // characterDao.insert(character.component1(),character.component2(),character.component3())
+                // character = arrayOf(Characterdata("Pekka", "4","Fighter"))
+                // characterDao.insert(character.component1(),character.component2(),character.component3())
+
 
                 // TODO: Add your own words!
             }
@@ -70,6 +72,8 @@ public abstract class CharacterRoomDatabase : RoomDatabase() {
 
     }
 }
+
+
 
 
 

@@ -1,12 +1,33 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/red_primary</item>
+        <item name="colorPrimaryDark">@color/red_primary_darker</item>
+        <item name="colorAccent">@color/red_secondary1</item>
+        <item name="android:background">@color/background</item>
+        <item name="android:textColor">@color/text</item>
     </style>
+
+    <style name="ThemeOverlay.MySwitch" parent="">
+
+        <item name="colorControlActivated">#930C10</item>
+        <item name="colorSwitchThumbNormal">#290000</item>
+        <item name="android:colorForeground">#290000</item>
+
+    </style>
+
+    <style name="popupMenuStyle" parent="android:Theme.Material.Light.DarkActionBar">
+        <item name="actionMenuTextColor">@color/text</item>
+        <item name="android:popupBackground">@color/menubackground</item>
+    </style>
+
+    <style name="popupstyle" parent="android:Theme.Material.Light.DarkActionBar">
+        <item name="android:actionBarPopupTheme">@style/popupMenuStyle</item>
+    </style>
+
+
 
     <!-- The default font for RecyclerView items is too small.
     The margin is a simple delimiter between the words. -->

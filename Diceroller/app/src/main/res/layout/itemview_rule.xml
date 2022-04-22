@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Name: asdakjnad"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_desc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+    <TextView
+        android:id="@+id/tv_range"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_desc"
+        app:layout_constraintTop_toBottomOf="@id/tv_desc" />
+
+    <TextView
+        android:id="@+id/tv_duration"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_range"
+        app:layout_constraintTop_toBottomOf="@id/tv_range" />
+
+    <TextView
+        android:id="@+id/tv_damageType"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_duration"
+        app:layout_constraintTop_toBottomOf="@id/tv_duration" />
+
+    <TextView
+        android:id="@+id/tv_damageAtSlotLevelThree"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_damageType"
+        app:layout_constraintTop_toBottomOf="@id/tv_damageType" />
+
+    <TextView
+        android:id="@+id/tv_damageAtSlotLevelFour"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/black"
+        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_damageAtSlotLevelThree"
+        app:layout_constraintTop_toBottomOf="@id/tv_damageAtSlotLevelThree" />
+
+    <TextView
+        android:id="@+id/tv_damageAtSlotLevelFive"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/black"
+        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_damageAtSlotLevelFour"
+        app:layout_constraintTop_toBottomOf="@id/tv_damageAtSlotLevelFour" />
+
+    <TextView
+        android:id="@+id/tv_damageAtSlotLevelSix"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/black"
+        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_damageAtSlotLevelFive"
+        app:layout_constraintTop_toBottomOf="@id/tv_damageAtSlotLevelFive" />
+
+    <TextView
+        android:id="@+id/tv_damageAtSlotLevelSeven"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/black"
+        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_damageAtSlotLevelSix"
+        app:layout_constraintTop_toBottomOf="@id/tv_damageAtSlotLevelSix" />
+
+    <TextView
+        android:id="@+id/tv_damageAtSlotLevelEight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/black"
+        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_damageAtSlotLevelSeven"
+        app:layout_constraintTop_toBottomOf="@id/tv_damageAtSlotLevelSeven" />
+
+    <TextView
+        android:id="@+id/tv_damageAtSlotLevelNine"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/black"
+        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_damageAtSlotLevelEight"
+        app:layout_constraintTop_toBottomOf="@id/tv_damageAtSlotLevelEight" />
+
+    <TextView
+        android:id="@+id/tv_castingTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_damageAtSlotLevelNine"
+        app:layout_constraintTop_toBottomOf="@id/tv_damageAtSlotLevelNine" />
+
+    <TextView
+        android:id="@+id/tv_school"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:text="asdaskdjasjkdasndkjsidnklsmdaskodo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_castingTime"
+        app:layout_constraintTop_toBottomOf="@id/tv_castingTime" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

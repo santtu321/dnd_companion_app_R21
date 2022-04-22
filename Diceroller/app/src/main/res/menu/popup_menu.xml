@@ -1,26 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/action_main"
-        android:title="dice roller"
-        app:showAsAction="never"/>
-    <item
-        android:id="@+id/action_sum"
-        android:icon="@drawable/ic_dice"
-        android:title="dice roller sum"
-        app:showAsAction="never"/>
-    <item
-        android:id="@+id/action_rule"
-        android:title="rulebook"
-        app:showAsAction="never"/>
-    <item
-        android:id="@+id/action_database"
-        android:title="characters"
-        app:showAsAction="never"/>
-    <item
-        android:id="@+id/test"
-        android:title="test"
-        app:showAsAction="never"/>
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_back"
+        android:title=""
+        android:icon="@drawable/ic_baseline_arrow_back_24"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/action_home"
+        android:title=""
+        android:icon="@drawable/ic_baseline_home_24"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/more"
+        android:title=""
+        android:icon="@drawable/ic_baseline_more_vert_24"
+        app:showAsAction="always">
+
+
+        <menu>
+            <item
+                android:id="@+id/action_main"
+                android:title="dice roller"
+                android:icon="@drawable/ic_dice"
+                app:showAsAction="ifRoom"/>
+            <item
+                android:id="@+id/action_sum"
+                android:title="dice roller sum"
+                android:icon="@drawable/ic_baseline_add_24"
+                app:showAsAction="ifRoom"/>
+            <item
+                android:id="@+id/action_rule"
+                android:title="rulebook"
+                android:icon="@drawable/ic_baseline_menu_book_24"
+                app:showAsAction="ifRoom">
+
+                <menu>
+
+                    <item
+                        android:id="@+id/action_rule_spells"
+                        android:title="spells"
+                        android:icon="@drawable/ic_baseline_add_24"
+                        app:showAsAction="ifRoom"/>
+
+                    <item
+                        android:id="@+id/action_rule_monster"
+                        android:title="monsters"
+                        android:icon="@drawable/ic_baseline_add_24"
+                        app:showAsAction="ifRoom"/>
+
+            </menu>
+
+            </item>
+
+
+
+            <item
+                android:id="@+id/action_database"
+                android:title="characters"
+                android:icon="@drawable/ic_baseline_accessibility_24"
+                app:showAsAction="ifRoom"/>
+            <item
+                android:id="@+id/test"
+                android:title="test"
+                app:showAsAction="ifRoom"/>
+        </menu>
+
+    </item>
 
 </menu>

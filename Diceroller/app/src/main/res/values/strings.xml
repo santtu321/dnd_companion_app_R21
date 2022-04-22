@@ -6,4 +6,18 @@
     <string name="hint_word">Character name...</string>
     <string name="button_save">Save</string>
     <string name="empty_not_saved">Word not saved because it is empty.</string>
+    <string name="hint_lvl">Character level...</string>
+    <string name="hint_class">Character class...</string>
+    <string name="hint_race">Character race...</string>
+    <string name="hint_str">Character strength score...</string>
+    <string name="hint_dex">Character dexterity score...</string>
+    <string name="hint_con">Character constitution score...</string>
+    <string name="hint_int">Character intelligence score...</string>
+    <string name="hint_wis">Character wisdom score...</string>
+    <string name="hint_cha">Character charisma score...</string>
+
+    <string name="hint_delete">Which character you wish to delete (Id)...</string>
+    <string name="button_delete">Delete</string>
+
+    <string name="delete">Delete</string>
 </resources>

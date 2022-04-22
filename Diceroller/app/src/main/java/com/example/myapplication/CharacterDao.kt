@@ -1,20 +1,25 @@
 package com.example.myapplication
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.lifecycle.LiveData
+import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CharacterDao {
 
-    @Query("SELECT * FROM character_table ORDER BY character ASC")
-    fun getAlphabetizedWords(): Flow<List<Character>>
+    @Query("SELECT * FROM character_table ORDER BY id ASC")
+    fun getAlphabetizedWords(): Flow<List<Characterdata>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(character: Character)
+    suspend fun insert(characterdata : Characterdata)
 
     @Query("DELETE FROM character_table")
     suspend fun deleteAll()
-}
+
+    @Query("DELETE FROM character_table WHERE id = :id")
+    fun deleteByUserId(id: Int)
+
+    @Update
+    fun updateByUserId(characterdata : Characterdata)
+
+}//LIMIT 1 OFFSET
